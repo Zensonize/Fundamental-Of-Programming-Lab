@@ -15,6 +15,7 @@ double KTM (double kilo) {
 void Lab1 () {
     char choose;
     double dist;
+    printf("Input distant need to be convert <number> <k or m>: ");
     scanf(" %lf %c",&dist,&choose);
     switch (choose){
         case 'k': 
@@ -27,7 +28,7 @@ void Lab1 () {
     }
 }
 
-/* ++++++++++++++++++++++++++++ Lab1 ++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++ End Lab1 ++++++++++++++++++++++++++++ */
 
 void Listdrink() {
     printf ("Orange Juice  : 20 Baht\n");
@@ -37,13 +38,7 @@ void Listdrink() {
     printf ("Select Yor Drink: ");
 }
 
-void Lab2(){
-    char choose;
-    int money;
-    Listdrink();
-    scanf (" %c",&choose);
-    printf ("Insert your money : ");
-    scanf (" %d",&money);
+void switchlab2(char choose, int money){
     switch (choose){
         case 'O': 
             if(money>=20) {
@@ -73,7 +68,17 @@ void Lab2(){
     }
 }
 
-/* ++++++++++++++++++++++++++++ Lab2 ++++++++++++++++++++++++++++ */
+void Lab2(){
+    char choose;
+    int money;
+    Listdrink();
+    scanf (" %c",&choose);
+    printf ("Insert your money : ");
+    scanf (" %d",&money);
+    switchlab2(choose,money);
+}
+
+/* ++++++++++++++++++++++++++++ End Lab2 ++++++++++++++++++++++++++++ */
 
 void Lab3() {
     printf("Insert Score <Quiz> <Mid-term> <Final> :");
@@ -111,7 +116,7 @@ void Lab3() {
     }
 }
 
-/* ++++++++++++++++++++++++++++ Lab2 ++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++ End Lab3 ++++++++++++++++++++++++++++ */
 
 int isvalid(int m){
     if(m%100 == 0) return 1;
@@ -146,7 +151,10 @@ void Bonus() {
     else printf("Invalid amount");
 }
 
+/* ++++++++++++++++++++++++++++ End Lab Bonus ++++++++++++++++++++++++++++ */
+
 void doswitch(char choice){
+    printf("Lab %c is running\n-----------------------------------------------------------\n",choice);
     switch (choice){
         case '1':
             Lab1();
@@ -162,10 +170,12 @@ void doswitch(char choice){
             break;
         default : printf("Error Wrong Choice\n");
     }
+    printf("\n-------------------- Finished -----------------------------\n",choice);
 }
 
 int main() {
     char choice;
+    printf("Choose lab: ");
     choice = getchar();
     doswitch(choice);
     return 0;
