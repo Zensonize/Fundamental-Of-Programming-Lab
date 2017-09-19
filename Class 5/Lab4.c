@@ -8,17 +8,21 @@ int main() {
     int b=0;
     for (i=0;i<5;i++){
         scanf(" %d",&num[i]);
+        if(num[i]>30 || num[i]<1){
+            printf("%d value is Invalid",i+1);
+            goto END;
+        }
     }
     while (c = (getchar()!= EOF)){
     }
 
     for(i=0;i<5;i++){
-        //scanf("%d",&num);
         printf("%2d | ",num[i]);
         for (j=0;j<num[i];j++){
+            if(j>0 && j%5 == 0) printf(" ");
             printf("*");
         }
         printf("\n");
     }    
-    return 0;
+    END: return 0;
 }
