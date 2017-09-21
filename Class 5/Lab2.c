@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int i=100;
+    int i=90;
     while(i>=1){
         printf("%d ",i);
         i-=10;
