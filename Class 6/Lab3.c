@@ -2,13 +2,10 @@
 #include <math.h>
 
 int main() {
-    int value,lines,iseven=0;
+    int value,lines;
     scanf("%d",&value);
 
-    if(value%2 == 1) {
-        lines = value+1;
-        iseven=1;
-    }
+    if(value%2 == 1) lines = value+1;
     else lines = value;
     
     int a,b,spc,nums;
