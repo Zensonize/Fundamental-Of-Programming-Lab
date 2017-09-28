@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+/*
 void factorial(int num) {
     int result = 1,loop;
     if(num == 0){
@@ -11,16 +12,22 @@ void factorial(int num) {
         }
         printf("%d! = %10d",num,result);
     }
+}*/
+
+int refactorial (int value){
+    if (value<=1) return 1;
+    else return value*refactorial(value-1);
 }
 
 int main () {
     int fac;
     while(1){
+        printf("Enter the factorial number: ");
         scanf("%d",&fac);
         if(fac < 0){
             printf("Error Please input again\n");    
         }
         else break;
     }
-    factorial(fac);
+    printf("%d! = %d",fac,refactorial(fac));
 }
