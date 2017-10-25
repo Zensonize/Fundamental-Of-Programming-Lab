@@ -10,6 +10,26 @@ void Regis_success(char FIRST[20], int length){
     printf("Now you can login to the ICT Contact Management System and start to\nsearch for ICT faculty staffs' and friends' information.\n");
 }
 
+int Regis_Emailverification(char Email[40],int length){
+    int i,isconta = 0,isvalid1=0,iscontaa=0,isvalid2=0;
+    for(i=0;i<length;i++){
+        if(isconta == 1 ) isvalid1++;   
+        if(iscontaa == 1 && isvalid1>0) isvalid2++;
+        if(Email[i] =='@') isconta = 1;
+        if(Email[i] == '@' && Email[i+1] == '.') break;
+        if(isconta == 1 && Email[i]=='.') iscontaa = 1;
+    }
+    if(isconta == 0) {
+        printf("[ERROR] Email must contain @\n");
+        return 0;
+    }
+    else if(isvalid2<1){
+        printf("[ERROR] invalid Email\n");
+        return 0;
+    }
+    else return 2;
+}
+
 int Regis_PWDverification(char PWDa[30],char PWDb[30],int l1,int l2){
     if(l1 != l2) {
         printf("[ERROR] Password didn't match\n");
@@ -71,9 +91,9 @@ void Login(){
 }
 
 void URegist(){
-    int ID,Phone,Email;
-    char First[20],Last[30],PWD[30],PWD1[30];
-    int first_length,last_length,pwd_length,pwd1_length;
+    int ID,Phone;
+    char First[20],Last[30],PWD[30],PWD1[30],Email[40];
+    int first_length,last_length,email_length,pwd_length,pwd1_length;
     int iscorrect=2;
     CScreen();
     printf(" [Registration]\n\n");
@@ -127,8 +147,20 @@ void URegist(){
         scanf("%d",&Phone);
         iscorrect = Regis_numErrorhandling (Phone,1);
     }while(iscorrect == 0);
-
     iscorrect = 2;
+    do{
+        iscorrect == 2 ? printf("Email: ") : printf("[Re-type] Email: ");
+        email_length=0;
+        char email_temp;
+        do{
+            if(email_length == 0) scanf(" %c",&PWD[0]);
+            else Email[email_length] = email_temp;
+            email_temp = getchar();
+            email_length++;
+        }while(email_temp != '\n');
+        iscorrect = Regis_Emailverification(Email,email_length);
+    }while(iscorrect ==0);
+
     // PWD1 ---------------------------------------------------------
     do{
         do{
