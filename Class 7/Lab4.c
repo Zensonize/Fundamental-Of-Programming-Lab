@@ -1,64 +1,43 @@
 #include <stdio.h>
 
-int main (){
-    int data[500],a=0;
-    int index=0,mode[2][500],i,j,modeindex=0;
-    //< input data >
-    while (1){
-        scanf("%d",&a);
-        if(a<0) break;
-        data[index] = a;
-        if(index == 0){
-            mode[0][modeindex] = data[0];
-            mode[1][modeindex] = 1;
-            modeindex++;
-        }
-        if(index!=0){
-            for(j=0;j<modeindex;j++){
-                printf("\tChecking data:%d with mode:%d\n",index,j);
-                if(data[index]==mode[0][j]){
-                    mode[1][j]++;
-                    printf("found duplicated data\n");
-                    //continue;
-                    break;
-                }
-                else if(j == modeindex-1){
-                    mode[0][modeindex] = data[index];
-                    mode[1][modeindex] = 1;
-                    modeindex++;
-                    printf("No relevant data\n");
-                    break;
-                }
-            }
-        }
-        index++;
-        
-    }
-    
-    //< for debugging >
-    
-    for(i=0;i<modeindex;i++){
-        printf("%d ",mode[0][i]);
-    }
-    printf("\n");
-    for(i=0;i<modeindex;i++){
-        printf("%d ",mode[1][i]);
-    }    
+int mode(int a[],int n) {
+   int maxv = 0, maxc = 0, i, j;
 
-    // <find max mode>
-    int maxmode =0,maxmodeid,duplicate = 1;
-    for(i=0;i<modeindex;i++){
-        if(maxmode<mode[1][i]) {
-            maxmode=mode[1][i];
-            maxmodeid = i;
-        }
-    }
-    for(i=0;i<modeindex;i++){
-        if(maxmode!=mode[1][i]) {
-            duplicate = 0;
+   for (i = 0; i < n; ++i) {
+      int count = 0;
+      
+      for (j = 0; j < n; ++j) {
+         if (a[j] == a[i])
+         ++count;
+      }
+      
+      if (count > maxc) {
+         maxc = count;
+         maxv = a[i];
+      }
+   }
+
+   return maxv;
+}
+
+int main(){
+    int input[500];
+    int count = 0;
+    int i;
+    int sum = 0;
+    float avg;
+    printf("Input Number: ");
+    for(i = 0 ; i < 500 ; i++){
+        scanf("%d" , &input[i]);
+        if(input[i] > 0){
+            if(input[i] > 0 && input[i] < 101){
+                sum += input[i];
+                count += 1;
+            }
+        }else{
             break;
         }
     }
-    if(duplicate==0) printf("Mode is : %d\n",mode[0][maxmodeid]);
-    else printf("no mode\n");
+    printf("Mode = %d \n" ,mode(input , count) );
+    return 0;
 }

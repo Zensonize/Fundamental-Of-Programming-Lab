@@ -1,44 +1,34 @@
 #include <stdio.h>
-int getC(int A, int B, int size){
-    if(B==size-1) return A+1;
-    else return A;
-}
 
-int getD(int A, int B,int C, int size){
-    if(C!=A) return 0;
-    else return B+1;
-}
+  int main() {
+    int dimension, dimensionOfN, divisible,
+    i, j, k, temp, count = 0;
 
-int main() {
-    int N,K;
-    scanf("%d %d",&N,&K);
-    int array[N][N];
-    int i,j;
-    for(i=0;i<N;i++){
-        for(j=0;j<N;j++){
-            scanf("%d",&array[i][j]);
-        }
+    printf("Input number of dimension and K value:");
+    scanf("%d %d", & dimension, & divisible);
+    dimensionOfN = dimension * dimension;
+    int arr[dimensionOfN];
+    for (i = 0; i < dimensionOfN; i++) {
+      printf("Input number %d : ", i + 1);
+      scanf("%d", & arr[dimensionOfN]);
+    }
+    for (int i = 0; i < dimensionOfN-2; i++)
+    {
+       for (int j = i+1; j < dimensionOfN-1; j++)
+       {
+           for (int k = j+1; k < dimensionOfN; k++)
+           {
+               temp = arr[i] + arr[j] + arr[k];
+               if (temp % divisible == 0)
+               {
+                   count += 1 ;
+                 
+               }
+           }
+       }
     }
 
-    int a,b,c,d,e,f,sum,count=0;
-    for(a=0;a<N;a++){
-        for(b=0;b<N;b++){
-            c = getC(a,b,N);
-            for(c;c<N;c++){
-                d = getD(a,b,c,N);
-                for(d;d<N;d++){
-                    e = getC(c,d,N);
-                    for(e;e<N;e++){
-                        f = getD(c,d,e,N);
-                        for(f;f<N;f++){
-                            sum = array[a][b]+array[c][d]+array[e][f];
-                            if(sum%K==0) count++;
-                        }
-                    }
-                }
-            }
-            
-        }
-    }
     printf("DUMMY = %d\n",count);
-}
+
+    return 0;
+  }
