@@ -21,7 +21,6 @@
                temp = arr[i] + arr[j] + arr[k];
                if (temp % divisible == 0)
                {
-                   printf("DUMMY\n");
                    count += 1 ;
                  
                }
@@ -29,7 +28,7 @@
        }
     }
 
-    printf("count: %d\n" , count);
+    printf("DUMMY = %d\n",count);
 
     return 0;
   }
