@@ -3,6 +3,8 @@
 #include <string.h>
 #include <math.h>
 
+// TODO : convert function to receive location to b used in edit data function
+
 struct user{
     char ID[10];
     int IDs;
@@ -19,18 +21,18 @@ struct user Alluser[100];
 struct user sort;
 
 // <-------------------------------------------------- REGISTERATION ----------------------------------------------------------------------->
-void Regist_ID(){
+void Regist_ID(int user_index){
     int z;
-    Alluser[user_val].IDs = 0;
+    Alluser[user_index].IDs = 0;
     printf("ID: ");
-    scanf("%s",Alluser[user_val].ID);
-    if(strlen(Alluser[user_val].ID) != 7) {
+    scanf("%s",Alluser[user_index].ID);
+    if(strlen(Alluser[user_index].ID) != 7) {
         printf("[ERROR] You can use only 7 digits for ID\n");
         printf("[Re-type] ");
-        Regist_ID();
+        Regist_ID(user_index);
     }
     for(z=0;z<7;z++){
-        Alluser[user_val].IDs = Alluser[user_val].IDs + Alluser[user_val].ID[z] * pow(10,(6-z));
+        Alluser[user_index].IDs = Alluser[user_index].IDs + Alluser[user_index].ID[z] * pow(10,(6-z));
     }
 }
 
@@ -56,48 +58,48 @@ int Regist_isvalidName(char string[],int length){
     return result;
 }
 
-void Regist_Firstname(){
+void Regist_Firstname(int user_index){
     int isvalid;
     printf("First name: ");
-    scanf("%s",Alluser[user_val].First);
-    isvalid = Regist_isvalidName(Alluser[user_val].First,strlen(Alluser[user_val].First));
+    scanf("%s",Alluser[user_index].First);
+    isvalid = Regist_isvalidName(Alluser[user_index].First,strlen(Alluser[user_index].First));
     if(isvalid == 2) {
         //memset(Alluser[user_val].First, NULL, strlen(Alluser[user_val].First));
         printf("[ERROR] First character of First name should be \"CAPITAL\" letter\n");
         printf("[Re-type] ");
-        Regist_Firstname();
+        Regist_Firstname(user_index);
     }
     else if(isvalid == 0){
         //memset(Alluser[user_val].First, NULL, strlen(Alluser[user_val].First));
         printf("[ERROR] Invalid First name\n");
         printf("[Re-type] ");
-        Regist_Firstname();
+        Regist_Firstname(user_index);
     }
 }
 
 //Didn't check for error
 
-void Regist_Lastname(){
+void Regist_Lastname(int user_index){
     int isvalid;
     printf("Last name: ");
-    scanf("%s",Alluser[user_val].Last);
-    isvalid = Regist_isvalidName(Alluser[user_val].Last,strlen(Alluser[user_val].Last));
+    scanf("%s",Alluser[user_index].Last);
+    isvalid = Regist_isvalidName(Alluser[user_index].Last,strlen(Alluser[user_index].Last));
     if(isvalid == 2) {
         //memset(Alluser[user_val].Last, NULL, strlen(Alluser[user_val].Last));
         printf("[ERROR] First character of Last name should be \"CAPITAL\" letter\n");
         printf("[Re-type] ");
-        Regist_Lastname();
+        Regist_Lastname(user_index);
     }
     else if(isvalid == 0){
         //memset(Alluser[user_val].Last, NULL, strlen(Alluser[user_val].Last));
         printf("[ERROR] Invalid Last name\n");
         printf("[Re-type] ");
-        Regist_Lastname();
+        Regist_Lastname(user_index);
     }   
 }
 //              <-------------- PHONE REGISTERATION ------------->
-int Regist_isvalidPhone(){
-    if(strlen(Alluser[user_val].Phone) != 10){
+int Regist_isvalidPhone(int user_index){
+    if(strlen(Alluser[user_index].Phone) != 10){
         printf("[ERROR] You can use only 10 digits for phone number\n");
         printf("[Re-type] ");
         return 0;
@@ -105,8 +107,8 @@ int Regist_isvalidPhone(){
     else{
         int i,wrong = 1;
         for(i=0;i<10;i++){
-            if((int)Alluser[user_val].Phone[i] < 48 || (int)Alluser[user_val].Phone[i] > 57){
-                printf("%c %d",Alluser[user_val].Phone[i],(int)Alluser[user_val].Phone[i]);
+            if((int)Alluser[user_index].Phone[i] < 48 || (int)Alluser[user_index].Phone[i] > 57){
+                printf("%c %d",Alluser[user_index].Phone[i],(int)Alluser[user_index].Phone[i]);
                 wrong = 0;
                 printf("[ERROR] Invalid phone number\n");
                 printf("[Re-type] ");
@@ -117,68 +119,69 @@ int Regist_isvalidPhone(){
     }
 }
 
-void Regist_Phone(){
+void Regist_Phone(int user_index){
     printf("Phone number: ");
-    scanf("%s",Alluser[user_val].Phone);
-    if(Regist_isvalidPhone() == 0) Regist_Phone();
+    scanf("%s",Alluser[user_index].Phone);
+    if(Regist_isvalidPhone(user_index) == 0) Regist_Phone(user_index);
     
 }
 
 // BUG when @ is the last char
 //              <-------------- EMAIL REGISTERATION ------------->
-void Regist_Email(){
+void Regist_Email(int user_index){
     printf("Email: ");
-    scanf("%s",Alluser[user_val].Email);
-    if(strstr(Alluser[user_val].Email,"@.") != NULL){
+    scanf("%s",Alluser[user_index].Email);
+    if(strstr(Alluser[user_index].Email,"@.") != NULL){
         printf("[ERROR] Invalid Email\n");
         printf("[Re-type] ");
-        Regist_Email();
+        Regist_Email(user_index);
     }
-    else if(strstr(Alluser[user_val].Email,"@") == NULL){     //use strchr
+    else if(strstr(Alluser[user_index].Email,"@") == NULL){     //use strchr
         printf("[ERROR] Email must contain \'@\'\n");
         printf("[Re-type] ");
-        Regist_Email();
+        Regist_Email(user_index);
     }
-    else if(strstr(Alluser[user_val].Email,"@") != NULL){
-        if(strstr(Alluser[user_val].Email,".") == NULL){
-            printf("[ERROR] Email must contain \'@\'\n");
+    else if(strstr(Alluser[user_index].Email,"@") != NULL){
+        if(strstr(Alluser[user_index].Email,".") == NULL){
+            printf("[ERROR] Invalid Email\n");
             printf("[Re-type] ");
-            Regist_Email();
+            Regist_Email(user_index);
         }
     }
 }
 
 //              <-------------- PASSWORD REGISTERATION ------------->
-int Regist_PWDconfirm(){
+int Regist_PWDconfirm(int user_index){
     char confPWD[30];
     printf("Confirmed Password: ");
     scanf("%s",confPWD);
     //printf("%d\n",strcmp(Alluser[user_val].PWD, confPWD));
-    if(strcmp(Alluser[user_val].PWD, confPWD) != 0){
+    if(strcmp(Alluser[user_index].PWD, confPWD) != 0){
         printf("[ERROR] Password didn't match\n");
         printf("[Re-type] ");
         return 0;
     }
+    else return 1;
 }
 
-void Regist_PWD(){
+void Regist_PWD(int user_index){
     printf("Password: ");
-    scanf("%s",Alluser[user_val].PWD);
+    scanf("%s",Alluser[user_index].PWD);
     //printf("%d",strlen(Alluser[user_val].PWD));
-    if(strlen(Alluser[user_val].PWD) < 8){
+    if(strlen(Alluser[user_index].PWD) < 8){
         printf("[ERROR] You must use at least 8 characters for password\n");
         printf("[Re-type] ");
-        Regist_PWD();
+        Regist_PWD(user_index);
     }
-    if(Regist_PWDconfirm() != 0){
-        Regist_PWD();
+    if(Regist_PWDconfirm(user_index) == 0){
+        Regist_PWD(user_index);
     }
 }
 
-void Regist_Success(){
+void Regist_Success(int user_index){
     printf("\n -- End of the Registration Process --\n\n");
     printf("Congratulation!! ");
-    printf("%s,\n",Alluser[user_val].First);
+    printf("%s,\n",Alluser[user_index].First);
     printf("Now you can login to the ICT Contact Management System and start to search for ICT faculty staffs' and friends' information.\n");
 }
 
@@ -216,7 +219,7 @@ void Initialize(){
     fclose(userdata);
 }
 
-void Initialize_check(){
+void Listall(){
     int i;
     for(i=0;i<user_val;i++){
         printf("[USER %2d]\n",i);
@@ -231,14 +234,15 @@ void Initialize_check(){
 
 // <--------------------------------------------------   DATA OUTPUT   ----------------------------------------------------------------------->
 
-void Updatedata(){
+void Updatedata(int user_index){
     int i;
     
     FILE *nuserdata;
     nuserdata = fopen("D:\\Repository\\Fundamental-Of-Programming-Lab\\Project\\udata.txt","w");
-    fprintf(nuserdata,"%d,\n",user_val+1);
-    for(i=0;i<=user_val;i++){
-        fprintf(nuserdata,"%s,%s,%s,%s,%s,%s,%d,%d\n",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,Alluser[i].IDs,i);
+    fprintf(nuserdata,"%d,\n",user_index+1);
+    for(i=0;i<=user_index;i++){
+        fprintf(nuserdata,"\n%s,%s,%s,%s,%s,%s,%d,%d",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,Alluser[i].IDs,i);
+        //fprintf(nuserdata,"\n");
     }
     printf("[SYSTEM] Updated!\n");
     fclose(nuserdata);
@@ -248,15 +252,15 @@ void Updatedata(){
 void URegist(){
     printf(" [Registration]\n\n");
     printf("Please enter the following information\n");
-    Regist_ID();
-    Regist_Firstname();
-    Regist_Lastname();
-    Regist_Phone();
-    Regist_Email();
-    Regist_PWD();
-    Regist_Success();
+    Regist_ID(user_val);
+    Regist_Firstname(user_val);
+    Regist_Lastname(user_val);
+    Regist_Phone(user_val);
+    Regist_Email(user_val);
+    Regist_PWD(user_val);
+    Regist_Success(user_val);
     Sortudata();
-    Updatedata();
+    Updatedata(user_val);
     //goto : MAINMENU;
 }
 // <-------------------------------------------------- ADMIN PART ------------------------------------------------------------------->
@@ -290,10 +294,11 @@ void Login_Check(){
     for(i = 0;i<user_val;i++){
         if(strcmp(Alluser[i].ID,inID) == 0){
             if(strcmp(Alluser[i].PWD,inPWD) == 0){
-                if(Alluser.[i].ID[0] == 0 && Alluser.[i].ID[1] == 0)
+                if(Alluser[i].ID[0] == 0 && Alluser[i].ID[1] == 0){
                     printf("\n Now you are logged in as an admin in the system.");
                     printf("\n You can start using the following functions.");
                     //Home_Admin();
+                }
                 else{
                     printf("\n Now you are logged in as a student in the system.");
                     printf("\n You can start using the following functions.");
@@ -355,4 +360,4 @@ void MMenu(){
 int main(){
     Initialize();
     /*MAINMENU :*/ MMenu();
-}
+} 
