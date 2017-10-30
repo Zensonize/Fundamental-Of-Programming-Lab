@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 struct user{
-    int ID;
+    char ID[10];
+    int IDs;
     char First[50];
     char Last[50];
     char Phone[16];
@@ -18,12 +20,17 @@ struct user sort;
 
 // <-------------------------------------------------- REGISTERATION ----------------------------------------------------------------------->
 void Regist_ID(){
+    int z;
+    Alluser[user_val].IDs = 0;
     printf("ID: ");
-    scanf("%d",&Alluser[user_val].ID);
-    if(Alluser[user_val].ID/1000000 == 0 || Alluser[user_val].ID/1000000 >= 10) {
+    scanf("%s",Alluser[user_val].ID);
+    if(strlen(Alluser[user_val].ID) != 7) {
         printf("[ERROR] You can use only 7 digits for ID\n");
         printf("[Re-type] ");
         Regist_ID();
+    }
+    for(z=0;z<7;z++){
+        Alluser[user_val].IDs = Alluser[user_val].IDs + Alluser[user_val].ID[z] * pow(10,(6-z));
     }
 }
 
@@ -146,7 +153,7 @@ int Regist_PWDconfirm(){
     char confPWD[30];
     printf("Confirmed Password: ");
     scanf("%s",confPWD);
-    printf("%d\n",strcmp(Alluser[user_val].PWD, confPWD));
+    //printf("%d\n",strcmp(Alluser[user_val].PWD, confPWD));
     if(strcmp(Alluser[user_val].PWD, confPWD) != 0){
         printf("[ERROR] Password didn't match\n");
         printf("[Re-type] ");
@@ -157,13 +164,13 @@ int Regist_PWDconfirm(){
 void Regist_PWD(){
     printf("Password: ");
     scanf("%s",Alluser[user_val].PWD);
-    printf("%d",strlen(Alluser[user_val].PWD));
+    //printf("%d",strlen(Alluser[user_val].PWD));
     if(strlen(Alluser[user_val].PWD) < 8){
         printf("[ERROR] You must use at least 8 characters for password\n");
         printf("[Re-type] ");
         Regist_PWD();
     }
-    if(Regist_PWDconfirm() == 0){
+    if(Regist_PWDconfirm() != 0){
         Regist_PWD();
     }
 }
@@ -179,9 +186,9 @@ void Sortudata(){
     int i,j,k;
     for (i=0;i<user_val;i++){
         for(k=i+1;k<user_val;k++){
-            if(Alluser[i].ID>Alluser[k].ID){
+            if(Alluser[i].IDs>Alluser[k].IDs){
                 for(j=user_val-1;j>0;j--){
-                    if(Alluser[i].ID>Alluser[j].ID){
+                    if(Alluser[i].IDs>Alluser[j].IDs){
                         sort = Alluser[i];
                         Alluser[i] = Alluser[j];
                         Alluser[j] = sort;
@@ -203,7 +210,7 @@ void Initialize(){
     }
     fscanf(userdata,"%d,",&user_val);
     for(i=0;i<user_val;i++){
-        fscanf(userdata,"%d,%49[^,],%49[^,],%15[^,],%49[^,],%29[^,],%d",&Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,&Alluser[i].Index);
+        fscanf(userdata,"%15[^,],%49[^,],%49[^,],%15[^,],%49[^,],%29[^,],%d,%d",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,&Alluser[i].IDs,&Alluser[i].Index);
     }
     printf("[SYSTEM] loaded %d user(s)!\n",user_val);
     fclose(userdata);
@@ -213,7 +220,7 @@ void Initialize_check(){
     int i;
     for(i=0;i<user_val;i++){
         printf("[USER %2d]\n",i);
-        printf("\tID: %d\n",Alluser[i].ID);
+        printf("\tID: %s\n",Alluser[i].ID);
         printf("\tFirstname: %s\n",Alluser[i].First);
         printf("\tLastname: %s\n",Alluser[i].Last);
         printf("\tPhone number: %s\n",Alluser[i].Phone);
@@ -231,11 +238,11 @@ void Updatedata(){
     nuserdata = fopen("D:\\Repository\\Fundamental-Of-Programming-Lab\\Project\\udata.txt","w");
     fprintf(nuserdata,"%d,\n",user_val+1);
     for(i=0;i<=user_val;i++){
-        fprintf(nuserdata,"%d,%s,%s,%s,%s,%s,%d\n",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,i);
+        fprintf(nuserdata,"%s,%s,%s,%s,%s,%s,%d,%d\n",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,Alluser[i].IDs,i);
     }
-    printf("[SYSTEM] Updated!");
+    printf("[SYSTEM] Updated!\n");
     fclose(nuserdata);
-    Initialize();
+    //Initialize();
 }
 
 void URegist(){
@@ -250,36 +257,48 @@ void URegist(){
     Regist_Success();
     Sortudata();
     Updatedata();
-    goto : MAINMENU;
+    //goto : MAINMENU;
 }
+// <-------------------------------------------------- ADMIN PART ------------------------------------------------------------------->
 
 // <-------------------------------------------------- LOGIN ------------------------------------------------------------------->
 int Login_Error(int err_code){
-    char retry;
+    int retry;
     printf("[ERROR] No Relevant User data\n");
     printf("Go to Registeration or Retry?\n");
     printf("\t[0] Registeration\n");
     printf("\t[1] Retry\n");
-    do{
+    while(1){
         printf("Your Choice: ");
-        scanf(" %c",&retry);
-        if(retry != '1' || retry != '0') printf("[ERROR] Wrong Choice.");
-    }while(retry != '1' || retry != '0');
+        scanf("%d",&retry);
+        if(retry == 1) break;
+        else if(retry == 0) break;
+        else printf("[ERROR] Wrong Choice.\n[Re-enter] ");
+    }
+    return retry;
 }
 
 void Login_Check(){
-    int inID;
+    char inID[10];
+    int trash2;
     char inPWD[30];
     printf("Please enter yor ID: ");
-    scanf("%d",&inID);
+    scanf("%s",inID);
     printf("Please enter your password: ");
     scanf("%s",&inPWD);
     int i,isvaliduser = 1;
     for(i = 0;i<user_val;i++){
-        if(inID == Alluser[i].ID){
+        if(strcmp(Alluser[i].ID,inID) == 0){
             if(strcmp(Alluser[i].PWD,inPWD) == 0){
-                printf("\n Now you are logged in as a student in the system.");
-                printf("\n You can start using the following functions.");
+                if(Alluser.[i].ID[0] == 0 && Alluser.[i].ID[1] == 0)
+                    printf("\n Now you are logged in as an admin in the system.");
+                    printf("\n You can start using the following functions.");
+                    //Home_Admin();
+                else{
+                    printf("\n Now you are logged in as a student in the system.");
+                    printf("\n You can start using the following functions.");
+                    //Home_Student();
+                }
                 break;
             }
             else {
@@ -293,10 +312,10 @@ void Login_Check(){
         }
     }
     if(isvaliduser == 2 || isvaliduser == 3) {
-        int trash2;
         trash2 = Login_Error(isvaliduser);
-    if (trash2 == '1') Login_Check();
-    else if(Login_Error() == '0') URegist();
+    }
+    if (trash2 == 1) Login_Check();
+    else if(Login_Error(isvaliduser) == 0) URegist();
 
 }
 
@@ -335,5 +354,5 @@ void MMenu(){
 
 int main(){
     Initialize();
-    MAINMENU : MMenu();
+    /*MAINMENU :*/ MMenu();
 }
