@@ -15,12 +15,12 @@ int main() {
         for(i=0;i<Y;i++){
             for(j=0;j<X;j++){
                 if(array[i][j] != array[j][i]) {
-                    printf("Ther matrix is not a symmetric\n");
+                    printf("The matrix is not a symmetric\n");
                     issym =0;
                     break;
                 }
             }
-            if(issym==0) break;
         }
+        if(issym == 4) printf("The matrix is symmetric");
     }
 }

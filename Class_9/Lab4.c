@@ -4,7 +4,7 @@ int getC(int A, int B, int size){
     else return A;
 }
 
-int getD(int A, int B,int C, int size){
+int getD(int A, int B,int C){
     if(C!=A) return 0;
     else return B+1;
 }
@@ -25,14 +25,14 @@ int main() {
         for(b=0;b<N;b++){
             c = getC(a,b,N);
             for(c;c<N;c++){
-                d = getD(a,b,c,N);
+                d = getD(a,b,c);
                 for(d;d<N;d++){
                     e = getC(c,d,N);
                     for(e;e<N;e++){
-                        f = getD(c,d,e,N);
+                        f = getD(c,d,e);
                         for(f;f<N;f++){
-                            sum = array[a][b]+array[c][d]+array[e][f];
-                            if(sum%K==0) count++;
+                            sum = array[a][b]*array[c][d]*array[e][f];
+                            if(sum==K) count++;
                         }
                     }
                 }

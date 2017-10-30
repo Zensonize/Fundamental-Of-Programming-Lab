@@ -11,4 +11,5 @@ int main() {
         }
         printf("\n");
     }
+    printf("\n%d",array[2][3]);
 }
