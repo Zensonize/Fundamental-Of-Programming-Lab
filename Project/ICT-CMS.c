@@ -15,36 +15,6 @@ struct user{
 int user_val;
 struct user Alluser[100];
 struct user sort;
-// <-------------------------------------------------- LOGIN ------------------------------------------------------------------->
-void Login_Check(){
-    printf("Please enter yor ID: ");
-    scanf("%d",inID);
-    printf("Please enter your password: ");
-    scanf("%s",inPWD);
-    int i,isvaliduser = 1;
-    for(i = 0;i<user_val;i++){
-        if(inID == Alluser[i].ID){
-            if(strcmp(Alluser[i].PWD,inPWD) != 0){
-                isvaliduser = 0;
-                printf("[ERROR] Wrong ID or Password\n");
-                printf("[Re-type] ");
-            }
-            else {
-                printf("\n Now you are logged in as a student in the system.");
-                printf("\n You can start using the following functions.");
-            }
-        }
-        if(i ==user_val-1 || isvaliduser == 0) Login_Check();
-    }
-}
-
-void Login(){
-    int inID;
-    char inPWD[30];
-    printf(" [LOGIN Page]\n\n");
-    
-    if(Login_Check(&inID,inPWD) == 0) Login();
-}
 
 // <-------------------------------------------------- REGISTERATION ----------------------------------------------------------------------->
 void Regist_ID(){
@@ -118,6 +88,7 @@ void Regist_Lastname(){
         Regist_Lastname();
     }   
 }
+//              <-------------- PHONE REGISTERATION ------------->
 int Regist_isvalidPhone(){
     if(strlen(Alluser[user_val].Phone) != 10){
         printf("[ERROR] You can use only 10 digits for phone number\n");
@@ -138,6 +109,7 @@ int Regist_isvalidPhone(){
         return wrong;
     }
 }
+
 void Regist_Phone(){
     printf("Phone number: ");
     scanf("%s",Alluser[user_val].Phone);
@@ -146,7 +118,7 @@ void Regist_Phone(){
 }
 
 // BUG when @ is the last char
-
+//              <-------------- EMAIL REGISTERATION ------------->
 void Regist_Email(){
     printf("Email: ");
     scanf("%s",Alluser[user_val].Email);
@@ -169,6 +141,7 @@ void Regist_Email(){
     }
 }
 
+//              <-------------- PASSWORD REGISTERATION ------------->
 int Regist_PWDconfirm(){
     char confPWD[30];
     printf("Confirmed Password: ");
@@ -277,10 +250,60 @@ void URegist(){
     Regist_Success();
     Sortudata();
     Updatedata();
+    goto : MAINMENU;
+}
 
+// <-------------------------------------------------- LOGIN ------------------------------------------------------------------->
+int Login_Error(int err_code){
+    char retry;
+    printf("[ERROR] No Relevant User data\n");
+    printf("Go to Registeration or Retry?\n");
+    printf("\t[0] Registeration\n");
+    printf("\t[1] Retry\n");
+    do{
+        printf("Your Choice: ");
+        scanf(" %c",&retry);
+        if(retry != '1' || retry != '0') printf("[ERROR] Wrong Choice.");
+    }while(retry != '1' || retry != '0');
+}
+
+void Login_Check(){
+    int inID;
+    char inPWD[30];
+    printf("Please enter yor ID: ");
+    scanf("%d",&inID);
+    printf("Please enter your password: ");
+    scanf("%s",&inPWD);
+    int i,isvaliduser = 1;
+    for(i = 0;i<user_val;i++){
+        if(inID == Alluser[i].ID){
+            if(strcmp(Alluser[i].PWD,inPWD) == 0){
+                printf("\n Now you are logged in as a student in the system.");
+                printf("\n You can start using the following functions.");
+                break;
+            }
+            else {
+                isvaliduser = 2;
+                printf("[ERROR] Wrong ID or Password\n");
+                break;
+            }
+        }
+        if(i == user_val-1) {
+            if(isvaliduser != 2) isvaliduser =3;
+        }
+    }
+    if(isvaliduser == 2 || isvaliduser == 3) {
+        int trash2;
+        trash2 = Login_Error(isvaliduser);
+    if (trash2 == '1') Login_Check();
+    else if(Login_Error() == '0') URegist();
 
 }
 
+void Login(){
+    printf(" [LOGIN Page]\n\n");
+    Login_Check();
+}
 
 
 // <--------------------------------------------------   MAIN MENU   ----------------------------------------------------------------------->
@@ -312,5 +335,5 @@ void MMenu(){
 
 int main(){
     Initialize();
-    MMenu();
+    MAINMENU : MMenu();
 }
