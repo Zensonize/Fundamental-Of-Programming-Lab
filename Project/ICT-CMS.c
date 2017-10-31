@@ -211,9 +211,9 @@ void Initialize(){
     if ((userdata = fopen("D:\\Repository\\Fundamental-Of-Programming-Lab\\Project\\udata.txt","r")) != NULL){
         printf("[SYSTEM] loaded!\n");
     }
-    fscanf(userdata,"%d,",&user_val);
+    fscanf(userdata,"%d,\n",&user_val);
     for(i=0;i<user_val;i++){
-        fscanf(userdata,"%15[^,],%49[^,],%49[^,],%15[^,],%49[^,],%29[^,],%d,%d",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,&Alluser[i].IDs,&Alluser[i].Index);
+        fscanf(userdata,"\n%15[^,],%49[^,],%49[^,],%15[^,],%49[^,],%29[^,],%d,%d",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,&Alluser[i].IDs,&Alluser[i].Index);
     }
     printf("[SYSTEM] loaded %d user(s)!\n",user_val);
     fclose(userdata);
@@ -332,7 +332,7 @@ void Login(){
 
 // <--------------------------------------------------   MAIN MENU   ----------------------------------------------------------------------->
 
-void MMenu_routing (){
+int MMenu_routing (){
     int choice;
     printf("Enter the choice : ");
     scanf("%d",&choice);
@@ -342,10 +342,13 @@ void MMenu_routing (){
     else if(choice == 2){
         Login();
     }
+    else if(choice == 0) return 0;
     else if(choice != 0) MMenu_routing();
+    return 1;
 }
 
-void MMenu(){
+int MMenu(){
+    int a;
     char Mchoice;
     printf("===============================\n");
     printf("ICT Contact Management Systems\n");
@@ -354,10 +357,14 @@ void MMenu(){
     printf("[2] Login\n");
     printf("[0] Exit\n");
     printf("-----------------------\n");
-    MMenu_routing();
+    a = MMenu_routing();
+    return a;
 }
 
 int main(){
+    int a;
     Initialize();
-    /*MAINMENU :*/ MMenu();
+    do{
+        a = MMenu();
+    }while(a == 1);
 } 
