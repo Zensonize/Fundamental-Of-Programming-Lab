@@ -99,6 +99,66 @@ void Initialize(){
 
 // <--------------------------------------------------   END of FILE I/O --------------------------------------------------------------------->
 
+// <--------------------------------------------------   Login zone   --------------------------------------------------------------------->
+
+
+void Login_home(){
+    char loginID[8];
+    char loginPWD[30];
+    char login_temp;
+    int printloop;
+    int errorcode = 0;
+    int loginID_idx = 0,loginPWD_idx = 0,isenterpwd = 0;
+    int login_Response;
+    do{
+        system("cls");
+        printf("Enter your ID: ");
+        for(printloop = 0;printloop<loginID_idx;printloop++){
+            printf("%c",loginID[printloop]);
+        }
+        while(!kbhit());
+        login_temp = getch();
+        if(login_temp >= '0' && login_temp <= '9'){
+            if(loginID_idx <7){
+                loginID[loginID_idx] = login_temp;
+                loginID_idx++;
+            }
+        }
+        if(login_temp == 8) {
+            loginID_idx--;
+            if(loginID_idx <= 0) loginID_idx = 0;
+        }
+        if(login_temp == 13 && loginID_idx == 7) break;
+    }while(1);
+    
+    do{
+        system("cls");
+        printf("Your ID is: %s\n",loginID);
+        printf("Enter your Password: ");
+        for(printloop = 0;printloop<loginPWD_idx;printloop++){
+            printf("*");
+        }
+        while(!kbhit());
+        login_temp = getch();
+        if(login_temp == 8){
+            loginPWD_idx--;
+            if(loginPWD_idx <= 0) loginPWD_idx = 0;
+        }
+        else{
+            if(login_temp == 13) break;
+            if(loginPWD_idx < 30){
+                loginPWD[loginPWD_idx] = login_temp;
+                loginPWD_idx++;
+            }
+        }
+    }while(1);
+    //login_Response = Login_Check(loginID,loginPWD);
+}
+
+void Registeration(){
+
+}
+// <----------------------------------------------------   Home Page    ---------------------------------------------------------------------->
 int home() {
     int homeptr = 1;
     char homeptr_temp;
@@ -115,6 +175,8 @@ int home() {
             homeptr = (int) homeptr_temp - 48;
         }
     }while(1);
+    if(homeptr == 1) Registeration();
+    else if(homeptr == 2) Login_home();
     return homeptr;
 }
 
