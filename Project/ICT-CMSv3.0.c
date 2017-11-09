@@ -99,6 +99,30 @@ void Initialize(){
 
 // <--------------------------------------------------   END of FILE I/O --------------------------------------------------------------------->
 
+int home() {
+    int homeptr = 1;
+    char homeptr_temp;
+    do{
+        system("cls");
+        printf("WELCOME to ICT-CMS\n");
+        homeptr == 1 ? printf("-->\t[1] Registeration\n")   : printf("\t[1] Registeration\n");
+        homeptr == 2 ? printf("-->\t[2] Login\n")           : printf("\t[2] Login\n");
+        homeptr == 0 ? printf("-->\t[0] Exit\n")            : printf("\t[0] Exit\n");
+        while(!kbhit());
+        homeptr_temp = getch();
+        if(homeptr_temp == 13) break;
+        if(homeptr_temp >= '0' && homeptr_temp <= '2'){
+            homeptr = (int) homeptr_temp - 48;
+        }
+    }while(1);
+    return homeptr;
+}
+
 int main(){
+    char homechoice;
     Initialize();
+    while(1){
+        homechoice = home();
+        if(homechoice == 0) break;
+    }
 }
