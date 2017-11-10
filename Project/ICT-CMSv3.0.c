@@ -20,6 +20,19 @@ int user_val;
 struct user Alluser[100];
 struct user sort;
 
+void Redirecting(){
+    int timer1,timer2;
+    printf("Redirecting");
+    for(timer1 = 5; timer1 > 0; timer1--){
+        printf(" %d",timer1);
+        Sleep(200);
+        for(timer2 = 4;timer2>0;timer2--){
+            printf(".");
+            Sleep(200);
+        }
+    }
+}
+
 void Sortudata(){
     int i,j,k;
     for (i=0;i<user_val;i++){
@@ -101,6 +114,39 @@ void Initialize(){
 
 // <--------------------------------------------------   Login zone   --------------------------------------------------------------------->
 
+void Registeration(){
+    
+}
+
+void admin_home(){
+    printf("ADMIN");
+    Redirecting();
+}
+
+void user_home(){
+    printf("NORMAL");
+    Redirecting();
+}
+
+// <--------------------------------------------------   Login HOME --------------------------------------------------
+int Login_Check(char loginID[8],char loginPWD[30]){
+    int isfound = 0;
+    int useridx;
+    int i;
+    for(i=0;i<user_val;i++){
+        if(strcmp(loginID,Alluser[i].ID) == 0){
+            isfound = 1;
+            useridx = i;
+        }
+    }
+    if (isfound == 0) return -1;
+    else{
+        if(strcmp(loginPWD,Alluser[useridx].PWD) == 0){
+            return useridx;
+        }
+        else return -2;
+    }
+}
 
 void Login_home(){
     char loginID[8];
@@ -152,12 +198,52 @@ void Login_home(){
             }
         }
     }while(1);
-    //login_Response = Login_Check(loginID,loginPWD);
+    errorcode = Login_Check(loginID,loginPWD);
+    Redirecting();
+    if(errorcode < 0){
+        if(errorcode == -1) {
+            int retryptr = 1;
+            char retryptr_temp;
+            do{
+                system("cls");
+                printf("[ERROR] No relevant Data\n");
+                retryptr == 1 ? printf("-->\t[1] Retry\n")      : printf("\t[1] Retry\n"); 
+                retryptr == 2 ? printf("-->\t[2] Register\n")   : printf("\t[2] Register\n");
+                retryptr == 0 ? printf("-->\t[0] Exit\n")       : printf("\t[0] Exit\n");
+                while(!kbhit());
+                retryptr_temp = getch();
+                if(retryptr_temp == 13) break;
+                if(retryptr_temp >= '0' && retryptr_temp <= '2'){
+                    retryptr = (int) retryptr_temp - 48;
+                }
+            }while(1);
+            if(retryptr == 1) Login_home();
+            else if(retryptr == 2) Registeration();
+        }
+        else if(errorcode <= -2 && errorcode >= -3){
+            int retryptr = 1;
+            char retryptr_temp;
+            do{
+                system("cls");
+                printf("[ERROR] Wrong Username or Password\n");
+                retryptr == 1 ? printf("-->\t[1] Retry\n")      : printf("\t[1] Retry\n"); 
+                retryptr == 2 ? printf("-->\t[2] Register\n")   : printf("\t[2] Register\n");
+                retryptr == 0 ? printf("-->\t[0] Exit\n")       : printf("\t[0] Exit\n");
+                while(!kbhit());
+                retryptr_temp = getch();
+                if(retryptr_temp == 13) break;
+                if(retryptr_temp >= '0' && retryptr_temp <= '2'){
+                    retryptr = (int) retryptr_temp - 48;
+                }
+            }while(1);
+            if(retryptr == 1) Login_home();
+            else if(retryptr == 2) Registeration();
+        }
+    }
+    if (Alluser[errorcode].ID[0] == '0' && Alluser[errorcode].ID[1] == '0') admin_home();
+    else user_home();
 }
 
-void Registeration(){
-
-}
 // <----------------------------------------------------   Home Page    ---------------------------------------------------------------------->
 int home() {
     int homeptr = 1;
