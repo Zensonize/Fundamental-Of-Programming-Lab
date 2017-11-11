@@ -6,7 +6,7 @@
 #include <windows.h>
 
 struct user{
-    char ID[10];
+    char ID[7];
     int IDs;
     char First[50];
     char Last[50];
@@ -22,7 +22,7 @@ struct user sort;
 
 void Redirecting(){
     int timer1,timer2;
-    printf("Redirecting");
+    printf("\nRedirecting");
     for(timer1 = 5; timer1 > 0; timer1--){
         printf(" %d",timer1);
         Sleep(200);
@@ -55,6 +55,7 @@ void Sortudata(){
 
 void Listall(){
     int i;
+    system("cls");
     for(i=0;i<user_val;i++){
         printf("[USER %2d]\n",i);
         printf("\tID: %s\n",Alluser[i].ID);
@@ -104,7 +105,7 @@ void Initialize(){
     }
     fscanf(userdata,"%d,\n",&user_val);
     for(i=0;i<user_val;i++){
-        fscanf(userdata,"\n%15[^,],%49[^,],%49[^,],%15[^,],%49[^,],%29[^,],%d,%d",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,&Alluser[i].IDs,&Alluser[i].Index);
+        fscanf(userdata,"\n%8[^,],%49[^,],%49[^,],%15[^,],%49[^,],%29[^,],%d,%d",Alluser[i].ID,Alluser[i].First,Alluser[i].Last,Alluser[i].Phone,Alluser[i].Email,Alluser[i].PWD,&Alluser[i].IDs,&Alluser[i].Index);
     }
     printf("[SYSTEM] loaded %d user(s)!\n",user_val);
     fclose(userdata);
@@ -118,9 +119,174 @@ void Registeration(){
     
 }
 
+void admin_edituser(){
+
+}
+// <------------------------------------------------- SEARCH ZONE   ----------------------------------------------------------------------->
+void ListU(int index){
+    printf("[USER %2d]\n",index);
+    printf("\tID: %s\n",Alluser[index].ID);
+    printf("\tFirstname: %s\n",Alluser[index].First);
+    printf("\tLastname: %s\n",Alluser[index].Last);
+    printf("\tPhone number: %s\n",Alluser[index].Phone);
+    printf("\tEmail: %s\n",Alluser[index].Email);
+    printf("\tPassword: %s\n\n",Alluser[index].PWD);
+}
+
+void doSearch(char searchchar[],char db[],int uindex){
+    int pos_search = 0;
+    int pos_text = 0;
+    int len_search = strlen(searchchar)-2;
+    int len_text = strlen(db);
+    printf("Length search : %d\n",len_search);
+    printf("Length dv : %d\n",len_text);
+    printf("\n%c%c%c|%s ",searchchar[0],searchchar[1],searchchar[2],db);
+    for (pos_text = 0; pos_text < len_text - len_search;++pos_text){
+        if(db[pos_text] == searchchar[pos_search]){
+            ++pos_search;
+            if(pos_search == len_search){
+                // match
+                ListU(uindex);
+                return;
+            }
+        }
+        else{
+            pos_text -=pos_search;
+            pos_search = 0;
+        }        
+    }
+}
+
+void searchPhone(){
+
+}
+
+void searchEmail(){
+
+}
+
+void searchLast(){
+    char searchLast[8];
+    char search_temp;
+    int printloop,searchLast_idx = 0;
+    do{
+        system("cls");
+        printf("Search by Lastname\n");
+        printf("Enter Last name: ");
+
+    }while(0);
+}
+
+void searchFirst(){
+
+}
+
+void searchID(){
+    char searchID[8];
+    char search_temp;
+    int printloop,searchID_idx = 0;
+    int findloop;
+    do{
+        system("cls");
+        printf("Search ID: ");
+        for(printloop = 0;printloop<searchID_idx;printloop++){
+            printf("%c",searchID[printloop]);
+        }
+        while(!kbhit());
+        search_temp = getch();
+        if(search_temp == 13 && searchID_idx >= 1) break;
+        if(search_temp >= '0' && search_temp <= '9'){
+            if(searchID_idx <7){
+                searchID[searchID_idx] = search_temp;
+                searchID_idx++;
+            }
+        }
+        if(search_temp == 8) {
+            searchID_idx--;
+            if(searchID_idx <= 0) searchID_idx = 0;
+        }
+        
+    }while(1);
+    for(findloop = 0;findloop<user_val;findloop++){
+        doSearch(searchID,Alluser[findloop].ID,findloop);
+    }
+}
+
+void search_home(){
+    int searchptr = 1;
+    char searchptr_temp;
+    do{
+        system("cls");
+        printf("WELCOME to ADMIN ICT-CMS\n");
+        searchptr == 1 ? printf("-->\t[1] Search by ID\n")             : printf("\t[1] Search by ID\n");
+        searchptr == 2 ? printf("-->\t[2] Search by First name\n")     : printf("\t[2] Search by First name\n"); 
+        searchptr == 3 ? printf("-->\t[3] Search by Last name\n")      : printf("\t[3] Search by Last name\n"); 
+        searchptr == 4 ? printf("-->\t[4] Search by Phone number\n")   : printf("\t[4] Search by Phone number\n"); 
+        searchptr == 5 ? printf("-->\t[5] Search by Email\n")          : printf("\t[5] Search by Email\n"); 
+        searchptr == 0 ? printf("-->\t[0] Back\n")                     : printf("\t[0] Back\n");
+        while(!kbhit());
+        searchptr_temp = getch();
+        if(searchptr_temp == 13) break;
+        if(searchptr_temp >= '0' && searchptr_temp <= '5'){
+            searchptr = (int) searchptr_temp - 48;
+        }
+    }while(1);
+    switch (searchptr){
+        case 1:
+            searchID();
+            do{
+            }while(getch() != 13);
+            break;
+        case 2:
+            searchFirst();
+            break;
+        case 3:
+            searchLast();
+            break;
+        case 4:
+            searchPhone();
+            break;
+        case 5:
+            searchEmail();
+            break;
+    }
+}
+
 void admin_home(){
-    printf("ADMIN");
-    Redirecting();
+    int admptr = 1;
+    char admptr_temp;
+    do{
+        system("cls");
+        printf("WELCOME to ADMIN ICT-CMS\n");
+        admptr == 1 ? printf("-->\t[1] Edit User's Contact\n")    : printf("\t[1] Edit User's Contact\n");
+        admptr == 2 ? printf("-->\t[2] Show all contact\n")       : printf("\t[2] Show all contact\n"); 
+        admptr == 3 ? printf("-->\t[3] Search for a contact\n")   : printf("\t[3] Search for a contact\n"); 
+        admptr == 4 ? printf("-->\t[4] Delete user's contact\n")  : printf("\t[4] Delete user's contact\n"); 
+        admptr == 0 ? printf("-->\t[0] exit\n")                   : printf("\t[0] exit\n");
+        while(!kbhit());
+        admptr_temp = getch();
+        if(admptr_temp == 13) break;
+        if(admptr_temp >= '0' && admptr_temp <= '4'){
+            admptr = (int) admptr_temp - 48;
+        }
+    }while(1);
+    if(admptr>0){
+        if(admptr == 1){
+            admin_edituser();
+        }
+        else if(admptr == 2){
+            Listall();
+            do{}while(getch() != 13);
+        }
+        else if(admptr == 3){
+            search_home();
+        }
+        else if(admptr == 4){
+            Deludata(9);
+        }
+    }
+    if(admptr == 0) Redirecting();
+    else admin_home();
 }
 
 void user_home(){
@@ -149,7 +315,7 @@ int Login_Check(char loginID[8],char loginPWD[30]){
 }
 
 void Login_home(){
-    char loginID[8];
+    char loginID[7];
     char loginPWD[30];
     char login_temp;
     int printloop;
@@ -174,12 +340,14 @@ void Login_home(){
             loginID_idx--;
             if(loginID_idx <= 0) loginID_idx = 0;
         }
-        if(login_temp == 13 && loginID_idx == 7) break;
+        if(login_temp == 13 && loginID_idx == 7) {
+            break;
+        }
     }while(1);
     
     do{
         system("cls");
-        printf("Your ID is: %s\n",loginID);
+        printf("Your ID is: %c\n",loginID[7]);
         printf("Enter your Password: ");
         for(printloop = 0;printloop<loginPWD_idx;printloop++){
             printf("*");
@@ -198,8 +366,9 @@ void Login_home(){
             }
         }
     }while(1);
+    printf("%s||",loginID);
     errorcode = Login_Check(loginID,loginPWD);
-    Redirecting();
+    //Redirecting();
     if(errorcode < 0){
         if(errorcode == -1) {
             int retryptr = 1;
