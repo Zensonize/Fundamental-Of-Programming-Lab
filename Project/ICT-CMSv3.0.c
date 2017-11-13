@@ -85,14 +85,69 @@ void Updatedata(int user_index){
 }
 
 // <-----------------------------------------------   DELETE USER DATA    -------------------------------------------------------------------->
-void Deludata(int pos){
+void Deludata(){
     //postion is the index
-    int deltmp;
-    for(deltmp = pos;deltmp<user_val;deltmp++){
-        Alluser[deltmp] = Alluser[deltmp+1];
+    char delID[8];
+    char delID_temp;
+    int delID_idx = 0,i;
+    int check;
+    int isfound = -1;
+    do{
+        system("cls");
+        printf("DELETE ID: ");
+        for(i=0;i<delID_idx;i++){
+            printf("%c",delID[i]);
+        }
+        printf("\n");
+        delID_temp = getch();
+        if(delID_temp == 13 && delID_idx == 7) break;
+        else if(delID_temp == 8){
+            delID_idx--;
+        }
+        else if(delID_idx == 7) continue;
+        else if(delID_temp >= '0' && delID_temp <= '9'){
+            delID[delID_idx] = delID_temp;
+            delID_idx++;
+        }
+    }while(1);
+    
+    for(check = 0;check<user_val;check++){
+        if(strcmp(delID,Alluser[check].ID) == 0){
+            isfound = check;
+            break;
+        }
     }
-    user_val-=2;
-    Updatedata(user_val);
+    char a;
+    if(isfound >= 0){
+        do{
+            printf("Delete %s? (Y/N)\n",Alluser[isfound].ID);
+            a = getch();
+            if(a == 'N' || a == 'n'){
+                break;
+            }
+            else if(a == 'Y' || a == 'y'){
+                int deltmp;
+                for(deltmp = isfound;deltmp<user_val;deltmp++){
+                    Alluser[deltmp] = Alluser[deltmp+1];
+                }
+                user_val-=2;
+                printf("Deleted user %s",delID);
+                Updatedata(user_val);
+                Redirecting();
+                break;
+            }
+        }while(1);
+    }
+    else {
+        printf("[ERROR] no relevant data\n");
+        printf("Retry? (Y/N)");
+        do{
+            a = getch();
+            if(a == 'N' || a == 'n' || a == 'Y' || a == 'y') break;
+        }while(1);
+        if(a == 'Y' || a == 'y') Deludata();
+    }
+    
 }
 
 // <-----------------------------------------------------   FILE I/O    ---------------------------------------------------------------------->
@@ -133,19 +188,19 @@ void ListU(int index){
     printf("\tPassword: %s\n\n",Alluser[index].PWD);
 }
 
-void doSearch(char searchchar[],char db[],int uindex){
+void do_Search(char searchchar[],int len_search,char db[60],int len_text,int uindex){
     int pos_search = 0;
     int pos_text = 0;
-    int len_search = strlen(searchchar)-2;
-    int len_text = strlen(db);
-    printf("Length search : %d\n",len_search);
-    printf("Length dv : %d\n",len_text);
-    printf("\n%c%c%c|%s ",searchchar[0],searchchar[1],searchchar[2],db);
-    for (pos_text = 0; pos_text < len_text - len_search;++pos_text){
-        if(db[pos_text] == searchchar[pos_search]){
+    char dbupdate[60];
+    int i;
+    for(i=0;i<=len_text;i++){
+        if(i!=len_text) dbupdate[i] = db[i];
+        else dbupdate[i] = 'a';
+    }
+    for (pos_text = 0; pos_text < len_text;++pos_text){
+        if(dbupdate[pos_text] == searchchar[pos_search]){
             ++pos_search;
             if(pos_search == len_search){
-                // match
                 ListU(uindex);
                 return;
             }
@@ -158,43 +213,192 @@ void doSearch(char searchchar[],char db[],int uindex){
 }
 
 void searchPhone(){
+    char searchPhone[10];
+    char search_temp;
+    int printloop,searchPhone_idx = 0;
+    int findloop;
+    int entered =0;
+    do{
+        if(entered != 0) while(!kbhit());
+        entered = 1;
+        system("cls");
+        printf("Search Phone: ");
+        /*for(printloop = 0;printloop<searchID_idx;printloop++){
+            printf("%c",searchID[printloop]);
+        }*/
+        //while(!kbhit());
+        search_temp = getch();
+        //system("cls");
+        if(search_temp == 13) break;
+        if(search_temp >= '0' && search_temp <= '9'){
+            if(searchPhone_idx <10){
+                searchPhone[searchPhone_idx] = search_temp;
+                searchPhone_idx++;
+            }
+        }
+        if(search_temp == 8) {
+            searchPhone_idx--;
+            if(searchPhone_idx <= 0) searchPhone_idx = 0;
+        }
+        for(printloop = 0;printloop<searchPhone_idx;printloop++){
+            printf("%c",searchPhone[printloop]);
+        }
+        printf("\n");
+        if(searchPhone_idx>2){
+            for(findloop = 0;findloop<user_val;findloop++){
+                do_Search(searchPhone,strlen(searchPhone),Alluser[findloop].Phone,strlen(Alluser[findloop].Phone),findloop);
+            }
+        }
+        //while(!kbhit());
+        //search_temp = getch();
+    }while(1);
 
 }
 
 void searchEmail(){
-
+    char searchEmail[20];
+    char search_temp;
+    int printloop,searchEmail_idx = 0;
+    int findloop;
+    int entered =0;
+    do{
+        if(entered != 0) while(!kbhit());
+        entered = 1;
+        system("cls");
+        printf("Search Email: ");
+        /*for(printloop = 0;printloop<searchID_idx;printloop++){
+            printf("%c",searchID[printloop]);
+        }*/
+        //while(!kbhit());
+        search_temp = getch();
+        //system("cls");
+        if(search_temp == 13) break;
+        if(search_temp >= 'A' && search_temp <= 'z'){
+            if(searchEmail_idx <10){
+                searchEmail[searchEmail_idx] = search_temp;
+                searchEmail_idx++;
+            }
+        }
+        if(search_temp == 8) {
+            searchEmail_idx--;
+            if(searchEmail_idx <= 0) searchEmail_idx = 0;
+        }
+        for(printloop = 0;printloop<searchEmail_idx;printloop++){
+            printf("%c",searchEmail[printloop]);
+        }
+        printf("\n");
+        if(searchEmail_idx>2){
+            for(findloop = 0;findloop<user_val;findloop++){
+                do_Search(searchEmail,strlen(searchEmail),Alluser[findloop].Email,strlen(Alluser[findloop].Email),findloop);
+            }
+        }
+        //while(!kbhit());
+        //search_temp = getch();
+    }while(1);
 }
 
 void searchLast(){
-    char searchLast[8];
+    char searchLast[20];
     char search_temp;
     int printloop,searchLast_idx = 0;
+    int findloop;
+    int entered =0;
     do{
+        if(entered != 0) while(!kbhit());
+        entered = 1;
         system("cls");
-        printf("Search by Lastname\n");
-        printf("Enter Last name: ");
-
-    }while(0);
+        printf("Search Last Name: ");
+        /*for(printloop = 0;printloop<searchID_idx;printloop++){
+            printf("%c",searchID[printloop]);
+        }*/
+        //while(!kbhit());
+        search_temp = getch();
+        //system("cls");
+        if(search_temp == 13) break;
+        if(search_temp >= 'A' && search_temp <= 'z'){
+            if(searchLast_idx <10){
+                searchLast[searchLast_idx] = search_temp;
+                searchLast_idx++;
+            }
+        }
+        if(search_temp == 8) {
+            searchLast_idx--;
+            if(searchLast_idx <= 0) searchLast_idx = 0;
+        }
+        for(printloop = 0;printloop<searchLast_idx;printloop++){
+            printf("%c",searchLast[printloop]);
+        }
+        printf("\n");
+        if(searchLast_idx>2){
+            for(findloop = 0;findloop<user_val;findloop++){
+                do_Search(searchLast,strlen(searchLast),Alluser[findloop].Last,strlen(Alluser[findloop].Last),findloop);
+            }
+        }
+        //while(!kbhit());
+        //search_temp = getch();
+    }while(1);
 }
 
 void searchFirst(){
-
+    char searchFirst[20];
+    char search_temp;
+    int printloop,searchFirst_idx = 0;
+    int findloop;
+    int entered =0;
+    do{
+        if(entered != 0) while(!kbhit());
+        entered = 1;
+        system("cls");
+        printf("Search First Name: ");
+        /*for(printloop = 0;printloop<searchID_idx;printloop++){
+            printf("%c",searchID[printloop]);
+        }*/
+        //while(!kbhit());
+        search_temp = getch();
+        //system("cls");
+        if(search_temp == 13) break;
+        if(search_temp >= 'A' && search_temp <= 'z'){
+            if(searchFirst_idx <10){
+                searchFirst[searchFirst_idx] = search_temp;
+                searchFirst_idx++;
+            }
+        }
+        if(search_temp == 8) {
+            searchFirst_idx--;
+            if(searchFirst_idx <= 0) searchFirst_idx = 0;
+        }
+        for(printloop = 0;printloop<searchFirst_idx;printloop++){
+            printf("%c",searchFirst[printloop]);
+        }
+        printf("\n");
+        if(searchFirst_idx>2){
+            for(findloop = 0;findloop<user_val;findloop++){
+                do_Search(searchFirst,strlen(searchFirst),Alluser[findloop].First,strlen(Alluser[findloop].First),findloop);
+            }
+        }
+        //while(!kbhit());
+        //search_temp = getch();
+    }while(1);
 }
 
 void searchID(){
-    char searchID[8];
+    char searchID[7];
     char search_temp;
     int printloop,searchID_idx = 0;
     int findloop;
+    int entered = 0;
     do{
+        if(entered != 0) while(!kbhit());
+        entered = 1;
         system("cls");
         printf("Search ID: ");
-        for(printloop = 0;printloop<searchID_idx;printloop++){
+        /*for(printloop = 0;printloop<searchID_idx;printloop++){
             printf("%c",searchID[printloop]);
-        }
-        while(!kbhit());
+        }*/
+        //while(!kbhit());
         search_temp = getch();
-        if(search_temp == 13 && searchID_idx >= 1) break;
+        //system("cls");
+        if(search_temp == 13) break;
         if(search_temp >= '0' && search_temp <= '9'){
             if(searchID_idx <7){
                 searchID[searchID_idx] = search_temp;
@@ -205,11 +409,19 @@ void searchID(){
             searchID_idx--;
             if(searchID_idx <= 0) searchID_idx = 0;
         }
-        
+        for(printloop = 0;printloop<searchID_idx;printloop++){
+            printf("%c",searchID[printloop]);
+        }
+        printf("\n");
+        if(searchID_idx>2){
+            for(findloop = 0;findloop<user_val;findloop++){
+                do_Search(searchID,strlen(searchID),Alluser[findloop].ID,strlen(Alluser[findloop].ID),findloop);
+            }
+        }
+        //while(!kbhit());
+        //search_temp = getch();
     }while(1);
-    for(findloop = 0;findloop<user_val;findloop++){
-        doSearch(searchID,Alluser[findloop].ID,findloop);
-    }
+    
 }
 
 void search_home(){
@@ -217,7 +429,7 @@ void search_home(){
     char searchptr_temp;
     do{
         system("cls");
-        printf("WELCOME to ADMIN ICT-CMS\n");
+        printf("WELCOME to ICT-CMS Advance Search System\n");
         searchptr == 1 ? printf("-->\t[1] Search by ID\n")             : printf("\t[1] Search by ID\n");
         searchptr == 2 ? printf("-->\t[2] Search by First name\n")     : printf("\t[2] Search by First name\n"); 
         searchptr == 3 ? printf("-->\t[3] Search by Last name\n")      : printf("\t[3] Search by Last name\n"); 
@@ -282,16 +494,71 @@ void admin_home(){
             search_home();
         }
         else if(admptr == 4){
-            Deludata(9);
+            Deludata();
         }
     }
     if(admptr == 0) Redirecting();
     else admin_home();
 }
 
-void user_home(){
-    printf("NORMAL");
-    Redirecting();
+// <------------------------------------------------------ USER ---------------------------------------------------->
+
+void editme(int usertoken){
+    int editmeptr = 1;
+    char editmeptr_temp;
+    do{
+        system("cls");
+        printf("My profile\n");
+        ListU(usertoken);
+        printf("---------------------------------------------------------------------------------------------\n");
+        editmeptr == 1 ? printf("-->\t[1] Edit my ID\n")             : printf("\t[1] Edit my ID\n");
+        editmeptr == 2 ? printf("-->\t[2] Edit my First name\n")     : printf("\t[2] Edit my First name\n"); 
+        editmeptr == 3 ? printf("-->\t[3] Edit my Last name\n")      : printf("\t[3] Edit my Last name\n"); 
+        editmeptr == 4 ? printf("-->\t[4] Edit my Phone number\n")   : printf("\t[4] Edit my Phone number\n"); 
+        editmeptr == 5 ? printf("-->\t[5] Edit my Email\n")          : printf("\t[5] Edit my Email\n"); 
+        editmeptr == 6 ? printf("-->\t[6] Edit my Password\n")       : printf("\t[6] Edit my Password\n"); 
+        editmeptr == 0 ? printf("-->\t[0] Back\n")                   : printf("\t[0] Back\n");
+        while(!kbhit());
+        editmeptr_temp = getch();
+        if(editmeptr_temp == 13) break;
+        if(editmeptr_temp >= '0' && editmeptr_temp <= '6'){
+            editmeptr = (int) editmeptr_temp - 48;
+        }
+    }while(1);
+    if(editmeptr != 0) editme(usertoken);
+}
+
+void user_home(int usertoken){
+    int userptr = 1;
+    char userptr_temp;
+    do{
+        system("cls");
+        printf("WELCOME to ICT-CMS %s\n",Alluser[usertoken].ID);
+        userptr == 1 ? printf("-->\t[1] Edit my Contact\n")         : printf("\t[1] Edit my Contact\n");
+        userptr == 2 ? printf("-->\t[2] Show all contact\n")        : printf("\t[2] Show all contact\n"); 
+        userptr == 3 ? printf("-->\t[3] Search for a contact\n")    : printf("\t[3] Search for a contact\n"); 
+        userptr == 0 ? printf("-->\t[0] exit\n")                    : printf("\t[0] exit\n");
+        while(!kbhit());
+        userptr_temp = getch();
+        if(userptr_temp == 13) break;
+        if(userptr_temp >= '0' && userptr_temp <= '3'){
+            userptr = (int) userptr_temp - 48;
+        }
+    }while(1);
+    if(userptr>0){
+        if(userptr == 1){
+            editme(usertoken);
+        }
+        else if(userptr == 2){
+            Listall();
+            do{}while(getch() != 13);
+        }
+        else if(userptr == 3){
+            search_home();
+        }
+    }
+    if(userptr == 0) Redirecting();
+    else user_home(usertoken);
 }
 
 // <--------------------------------------------------   Login HOME --------------------------------------------------
@@ -347,7 +614,7 @@ void Login_home(){
     
     do{
         system("cls");
-        printf("Your ID is: %c\n",loginID[7]);
+        printf("Your ID is: %s\n",loginID);
         printf("Enter your Password: ");
         for(printloop = 0;printloop<loginPWD_idx;printloop++){
             printf("*");
@@ -410,7 +677,7 @@ void Login_home(){
         }
     }
     if (Alluser[errorcode].ID[0] == '0' && Alluser[errorcode].ID[1] == '0') admin_home();
-    else user_home();
+    else user_home(errorcode);
 }
 
 // <----------------------------------------------------   Home Page    ---------------------------------------------------------------------->
