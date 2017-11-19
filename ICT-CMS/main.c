@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <windows.h>
+#include <ctype.h>
 
 struct contact{
     int idx;
@@ -50,8 +51,28 @@ void listdata (struct contact read[100],int *numuser){
     }
 }
 
-void Registeration(){
-    printf("Regist!\n");
+void input_id(char id[8]){
+    int inpos = 0;
+    char key_in;
+    int setnull = 7;
+    do{id[setnull] = '\0';}while(setnull--);
+    do{
+        printf("Enter your ID: ");
+        printf("%s",id);
+        key_in = getch();
+        printf("\n");
+        if(key_in == 13 && inpos == 7) break;
+        if(key_in == 8){
+            id[--inpos] = '\0';
+            if(inpos <=0) inpos = 0; 
+        }
+        else if(isdigit(key_in) && inpos < 7)   id[inpos++] = key_in;
+    }while(1);
+}
+
+void Registeration(int *numuser){
+    struct contact newdata;
+    input_id(newdata.id);
 }
 
 void Login(){
@@ -74,7 +95,7 @@ void home(struct contact muict[100],int *numuser){
         }
     }while(1);
     if(homecursor == 1) {
-        Registeration();
+        Registeration(numuser);
         home(muict,numuser);
     }
     else if(homecursor == 2) {
