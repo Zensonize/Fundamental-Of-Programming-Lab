@@ -70,26 +70,27 @@ void input_id(char id[8]){
     }while(1);
 }
 
-void input_first(char first[50]){
-    int inpos = 0,iscap = 1,isnoncap = 1,noncap_pos,i;
+void input_firstlast(char name[50],char FL){
+    int inpos = 0,iscap = 1,isnoncap = 1,noncap_pos = 99,i;
     char key_in;
     int setnull = 49;
-    do{first[setnull] = '\0';}while(setnull--);
+    do{name[setnull] = '\0';}while(setnull--);
     do{
-        printf("Enter your First Name: ");
-        printf("%s",first);
+        FL == 'F' ? printf("Enter your First Name: ") : printf("Enter your Last Name: ");
+        printf("%s",name);
         key_in = getch();
         printf("\n");
+        //printf("\t\t\t\tPOS:%d\tiscap:%d\tisnoncap:%d\tnoncap_pos:%d\n",inpos,iscap,isnoncap,noncap_pos);
         if(key_in == 13 && inpos >= 3 && iscap && isnoncap ) break;
         if(key_in == 8){
-            first[--inpos] = '\0';
+            name[--inpos] = '\0';
             if(inpos <=0) inpos = 0;
-            if(isnoncap == 0 && inpos <= noncap_pos) isnoncap = 1;
+            if(isnoncap == 0 && inpos <= noncap_pos) {isnoncap = 1; noncap_pos = 99;}
         }
         else if(isalpha(key_in) && inpos < 49){
-            first[inpos++] = key_in;
-            if(islower(first[0])) iscap = 0;else iscap = 1;
-            if(inpos>0 && isupper(key_in)){
+            name[inpos++] = key_in;
+            if(islower(name[0])) iscap = 0;else iscap = 1;
+            if(inpos > 1 && isupper(key_in)){
                 isnoncap = 0;
                 noncap_pos = inpos-1;
             }
@@ -97,10 +98,32 @@ void input_first(char first[50]){
     }while(1);
 }
 
+void input_phone(char phone[11]){
+int inpos = 0, iszero = 1;
+    char key_in;
+    int setnull = 10;
+    do{phone[setnull] = '\0';}while(setnull--);
+    do{
+        printf("Enter your Phone number: ");
+        printf("%s",phone);
+        key_in = getch();
+        printf("\n");
+        if(key_in == 13 && inpos == 10 && iszero) break;
+        if(phone[0] == '0') iszero = 1; else iszero = 0;
+        if(key_in == 8){
+            phone[--inpos] = '\0';
+            if(inpos <=0) inpos = 0;
+        }
+        else if(isdigit(key_in) && inpos < 10)   phone[inpos++] = key_in;
+    }while(1);
+}
+
 void Registeration(int *numuser){
     struct contact newdata;
     input_id(newdata.id);
-    input_first(newdata.first);
+    input_firstlast(newdata.first,'F');
+    input_firstlast(newdata.last,'L');
+    input_phone(newdata.phone);
 }
 
 void Login(){
@@ -112,9 +135,9 @@ void home(struct contact muict[100],int *numuser){
     char homecursor_tmp;
     do{
         printf("WELCOME to ICT-CMS\n");
-        homecursor == 1 ? printf("-->\t[1] Registeration\n")   : printf("\t[1] Registeration\n");
-        homecursor == 2 ? printf("-->\t[2] Login\n")           : printf("\t[2] Login\n");
-        homecursor == 0 ? printf("-->\t[0] Exit\n")            : printf("\t[0] Exit\n");
+        homecursor == 1 ? printf("-->\t[1] Registeration\n")   : printf("\t [1] Registeration\n");
+        homecursor == 2 ? printf("-->\t[2] Login\n")           : printf("\t [2] Login\n");
+        homecursor == 0 ? printf("-->\t[0] Exit\n")            : printf("\t [0] Exit\n");
         while(!kbhit());
         homecursor_tmp = getch();
         if(homecursor_tmp == 13) break;
