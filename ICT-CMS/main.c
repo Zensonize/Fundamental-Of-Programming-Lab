@@ -99,7 +99,7 @@ void input_firstlast(char name[50],char FL){
 }
 
 void input_phone(char phone[11]){
-int inpos = 0, iszero = 1;
+    int inpos = 0, iszero = 1;
     char key_in;
     int setnull = 10;
     do{phone[setnull] = '\0';}while(setnull--);
@@ -118,12 +118,45 @@ int inpos = 0, iszero = 1;
     }while(1);
 }
 
+void input_email(char email[50]){
+    int inpos = 0, isconta = 0,a_pos = 99,iscontd = 0,d_pos = 99;
+    char key_in;
+    int setnull = 49;
+    do{email[setnull] = '\0';}while(setnull--);
+    do{
+        printf("Enter your Email: ");
+        printf("%s",email);
+        //printf("\t\t\t\tPOS:%d\tconta:%d\ta_pos%d\tcontd:%d\td_pos:%d\n",inpos,isconta,a_pos,iscontd,d_pos);
+        key_in = getch();
+        printf("\n");
+        if(key_in == 13 && inpos >= 7 && isconta && iscontd) break;
+        if(key_in == 8){
+            
+            email[--inpos] = '\0';
+            if(iscontd && inpos <= d_pos){iscontd = 0;d_pos = 99;}
+            if(isconta && inpos <= a_pos){isconta = 0;a_pos = 99;}
+            if(inpos <=0) inpos = 0;
+        }
+        else if(isalnum(key_in) || key_in == '@' || key_in == '.'){
+            if(inpos < 50) {
+                if(key_in == '@'){isconta = 1; a_pos = inpos;}
+                if(isconta == 1 && key_in == '.'){
+                    if(a_pos+1 != inpos) {iscontd = 1; d_pos = inpos;}
+                }
+                email[inpos++] = key_in;
+            }
+        } 
+            
+    }while(1);
+}
+
 void Registeration(int *numuser){
     struct contact newdata;
     input_id(newdata.id);
     input_firstlast(newdata.first,'F');
     input_firstlast(newdata.last,'L');
     input_phone(newdata.phone);
+    input_email(newdata.email);
 }
 
 void Login(){
