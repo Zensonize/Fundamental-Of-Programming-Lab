@@ -34,10 +34,16 @@ void readfile(struct contact read[100],int *numuser){
 void listdata (struct contact read[100],int *numuser){
     int i;
     printf("\t\tTABLE OF USERS\n");
-    printf("IDX |  Student ID |\n");
+    printf("IDX |  Student ID |\t\tNAME\t\t|     PHONE  \t|\t    E-MAIL\t\t|\n");
+    printf("-----------------------------------------------------");
+    printf("--------------------------------------------\n");
     for(i=0;i<*numuser;i++){
         printf("%2d  |",read[i].idx);
         printf("   %7s   |",read[i].id);
+        printf(" %s",read[i].first);
+        printf(" %-15s\t|",read[i].last);
+        printf("   %10s\t|",read[i].phone);
+        printf("  %-25s\t|",read[i].email);
         printf("\n");
     }
 }
