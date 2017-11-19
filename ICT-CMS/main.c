@@ -145,9 +145,47 @@ void input_email(char email[50]){
                 }
                 email[inpos++] = key_in;
             }
-        } 
-            
+        }  
     }while(1);
+}
+
+void input_pwd(char pwd[30]){
+    char pwdchk[30];
+    int inpos = 0,inpos2 = 0;
+    char key_in,retry;
+    int setnull = 29;
+    do{pwd[setnull] = '\0'; pwdchk[setnull] = '\0';}while(setnull--);
+    do{
+        printf("Enter your Password: ");
+        printf("%s",pwd);
+        key_in = getch();
+        printf("\n");
+        if(key_in == 13 && inpos >= 8) break;
+        if(key_in == 8){
+            pwd[--inpos] = '\0';
+            if(inpos <=0) inpos = 0; 
+        }
+        else if(isalnum(key_in) && inpos < 30)   pwd[inpos++] = key_in;
+    }while(1);
+
+    do{
+        printf("Confirm Password: ");
+        printf("%s",pwdchk);
+        key_in = getch();
+        printf("\n");
+        if(key_in == 13 && inpos2 >= 8) break;
+        if(key_in == 8){
+            pwdchk[--inpos2] = '\0';
+            if(inpos2 <=0) inpos2 = 0; 
+        }
+        else if(isalnum(key_in) && inpos2 < 30)   pwdchk[inpos2++] = key_in;
+    }while(1);
+
+    if(strcmp(pwd,pwdchk) != 0){
+        printf("RETRY? (Y/N)");
+        do{retry = getch(); if(retry == 'Y' || retry == 'N')break;}while(1);
+        if (retry == 'Y') input_pwd(pwd);
+    }
 }
 
 void Registeration(int *numuser){
@@ -157,6 +195,7 @@ void Registeration(int *numuser){
     input_firstlast(newdata.last,'L');
     input_phone(newdata.phone);
     input_email(newdata.email);
+    input_pwd(newdata.pwd);
 }
 
 void Login(){
