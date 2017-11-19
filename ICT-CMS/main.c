@@ -70,9 +70,37 @@ void input_id(char id[8]){
     }while(1);
 }
 
+void input_first(char first[50]){
+    int inpos = 0,iscap = 1,isnoncap = 1,noncap_pos,i;
+    char key_in;
+    int setnull = 49;
+    do{first[setnull] = '\0';}while(setnull--);
+    do{
+        printf("Enter your First Name: ");
+        printf("%s",first);
+        key_in = getch();
+        printf("\n");
+        if(key_in == 13 && inpos >= 3 && iscap && isnoncap ) break;
+        if(key_in == 8){
+            first[--inpos] = '\0';
+            if(inpos <=0) inpos = 0;
+            if(isnoncap == 0 && inpos <= noncap_pos) isnoncap = 1;
+        }
+        else if(isalpha(key_in) && inpos < 49){
+            first[inpos++] = key_in;
+            if(islower(first[0])) iscap = 0;else iscap = 1;
+            if(inpos>0 && isupper(key_in)){
+                isnoncap = 0;
+                noncap_pos = inpos-1;
+            }
+        }
+    }while(1);
+}
+
 void Registeration(int *numuser){
     struct contact newdata;
     input_id(newdata.id);
+    input_first(newdata.first);
 }
 
 void Login(){
