@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <windows.h>
 
 struct contact{
     int idx;
@@ -48,11 +50,43 @@ void listdata (struct contact read[100],int *numuser){
     }
 }
 
+void Registeration(){
+    printf("Regist!\n");
+}
+
+void Login(){
+    printf("Login!\n");
+}
+
+void home(struct contact muict[100],int *numuser){
+    int homecursor = 1;
+    char homecursor_tmp;
+    do{
+        printf("WELCOME to ICT-CMS\n");
+        homecursor == 1 ? printf("-->\t[1] Registeration\n")   : printf("\t[1] Registeration\n");
+        homecursor == 2 ? printf("-->\t[2] Login\n")           : printf("\t[2] Login\n");
+        homecursor == 0 ? printf("-->\t[0] Exit\n")            : printf("\t[0] Exit\n");
+        while(!kbhit());
+        homecursor_tmp = getch();
+        if(homecursor_tmp == 13) break;
+        if(homecursor_tmp >= '0' && homecursor_tmp <= '2'){
+            homecursor = (int) homecursor_tmp - 48;
+        }
+    }while(1);
+    if(homecursor == 1) {
+        Registeration();
+        home(muict,numuser);
+    }
+    else if(homecursor == 2) {
+        Login();
+        home(muict,numuser);
+    }    
+}
 int main()
 {
     struct contact muict[100];
     int numuser;
     readfile(muict,&numuser);
     listdata(muict,&numuser);
-    getchar();
+    home(muict,&numuser);
 }
