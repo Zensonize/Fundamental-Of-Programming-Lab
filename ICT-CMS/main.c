@@ -14,6 +14,25 @@ struct contact{
     char pwd[30];
 };
 
+void outputfile(struct contact out[100],int *numuser){
+    int i,j;
+    FILE *userdata;
+    userdata = fopen("D:\\Repositories\\Fundamental-Of-Programming-Lab\\Project\\udata.txt","w");
+    fprintf(userdata,"%d,\n",*numuser);
+    for(i=0;i<*numuser;i++){
+        fprintf(userdata,"\n");
+        fprintf(userdata,"%s,",out[i].id);
+        fprintf(userdata,"%s,",out[i].first);
+        fprintf(userdata,"%s,",out[i].last);
+        fprintf(userdata,"%s,",out[i].phone);
+        fprintf(userdata,"%s,",out[i].email);
+        fprintf(userdata,"%s,",out[i].pwd);
+        fprintf(userdata,"%d,",i);
+    }
+    printf("[SYSTEM] Updated!\n");
+    fclose(userdata);
+}
+
 void readfile(struct contact read[100],int *numuser){
     FILE *userdata;
     int i;
@@ -196,7 +215,22 @@ int input_pwd(char pwd[30]){
     else return 1;
 }
 
-void Registeration(int *numuser){
+int input_finalize(struct contact muict[100],struct contact newdata,int *numuser){
+    listdata(muict,numuser);
+    printf("%s\n",newdata.id);
+    strcpy(muict[*numuser].id    , newdata.id);
+    strcpy(muict[*numuser].first , newdata.first);
+    strcpy(muict[*numuser].last  , newdata.last);
+    strcpy(muict[*numuser].phone , newdata.phone);
+    strcpy(muict[*numuser].email , newdata.email);
+    strcpy(muict[*numuser].pwd   , newdata.pwd);
+    *numuser = *numuser + 1;
+    listdata(muict,numuser);
+    outputfile(muict,numuser);
+    return 1;
+}
+
+void Registeration(struct contact muict[100],int *numuser){
     struct contact newdata;
     int step = 0;
     do{
@@ -207,7 +241,7 @@ void Registeration(int *numuser){
             case 3: step += input_phone(newdata.phone);                 break;
             case 4: step += input_email(newdata.email);                 break;
             case 5: step += input_pwd(newdata.pwd);                     break;
-            case 6: step++;                                             break;
+            case 6: step += input_finalize(muict,newdata,numuser);  break;
         }
     }while(step <= 6);
 }
@@ -232,7 +266,7 @@ void home(struct contact muict[100],int *numuser){
         }
     }while(1);
     if(homecursor == 1) {
-        Registeration(numuser);
+        Registeration(muict,numuser);
         home(muict,numuser);
     }
     else if(homecursor == 2) {
