@@ -51,7 +51,7 @@ void listdata (struct contact read[100],int *numuser){
     }
 }
 
-void input_id(char id[8]){
+int input_id(char id[8]){
     int inpos = 0;
     char key_in;
     int setnull = 7;
@@ -61,7 +61,8 @@ void input_id(char id[8]){
         printf("%s",id);
         key_in = getch();
         printf("\n");
-        if(key_in == 13 && inpos == 7) break;
+        if(key_in == 13 && inpos == 7) return 1;
+        if(key_in == 27) return 99;
         if(key_in == 8){
             id[--inpos] = '\0';
             if(inpos <=0) inpos = 0; 
@@ -70,7 +71,7 @@ void input_id(char id[8]){
     }while(1);
 }
 
-void input_firstlast(char name[50],char FL){
+int input_firstlast(char name[50],char FL){
     int inpos = 0,iscap = 1,isnoncap = 1,noncap_pos = 99,i;
     char key_in;
     int setnull = 49;
@@ -81,7 +82,8 @@ void input_firstlast(char name[50],char FL){
         key_in = getch();
         printf("\n");
         //printf("\t\t\t\tPOS:%d\tiscap:%d\tisnoncap:%d\tnoncap_pos:%d\n",inpos,iscap,isnoncap,noncap_pos);
-        if(key_in == 13 && inpos >= 3 && iscap && isnoncap ) break;
+        if(key_in == 13 && inpos >= 3 && iscap && isnoncap ) return 1;
+        if(key_in == 27) return 99;
         if(key_in == 8){
             name[--inpos] = '\0';
             if(inpos <=0) inpos = 0;
@@ -98,7 +100,7 @@ void input_firstlast(char name[50],char FL){
     }while(1);
 }
 
-void input_phone(char phone[11]){
+int input_phone(char phone[11]){
     int inpos = 0, iszero = 1;
     char key_in;
     int setnull = 10;
@@ -108,7 +110,8 @@ void input_phone(char phone[11]){
         printf("%s",phone);
         key_in = getch();
         printf("\n");
-        if(key_in == 13 && inpos == 10 && iszero) break;
+        if(key_in == 13 && inpos == 10 && iszero) return 1;
+        if(key_in == 27) return 99;
         if(phone[0] == '0') iszero = 1; else iszero = 0;
         if(key_in == 8){
             phone[--inpos] = '\0';
@@ -118,7 +121,7 @@ void input_phone(char phone[11]){
     }while(1);
 }
 
-void input_email(char email[50]){
+int input_email(char email[50]){
     int inpos = 0, isconta = 0,a_pos = 99,iscontd = 0,d_pos = 99;
     char key_in;
     int setnull = 49;
@@ -129,7 +132,8 @@ void input_email(char email[50]){
         //printf("\t\t\t\tPOS:%d\tconta:%d\ta_pos%d\tcontd:%d\td_pos:%d\n",inpos,isconta,a_pos,iscontd,d_pos);
         key_in = getch();
         printf("\n");
-        if(key_in == 13 && inpos >= 7 && isconta && iscontd) break;
+        if(key_in == 13 && inpos >= 7 && isconta && iscontd) return 1;
+        if(key_in == 27) return 99;
         if(key_in == 8){
             
             email[--inpos] = '\0';
@@ -149,7 +153,7 @@ void input_email(char email[50]){
     }while(1);
 }
 
-void input_pwd(char pwd[30]){
+int input_pwd(char pwd[30]){
     char pwdchk[30];
     int inpos = 0,inpos2 = 0;
     char key_in,retry;
@@ -161,6 +165,7 @@ void input_pwd(char pwd[30]){
         key_in = getch();
         printf("\n");
         if(key_in == 13 && inpos >= 8) break;
+        if(key_in == 27) return 99;
         if(key_in == 8){
             pwd[--inpos] = '\0';
             if(inpos <=0) inpos = 0; 
@@ -174,6 +179,7 @@ void input_pwd(char pwd[30]){
         key_in = getch();
         printf("\n");
         if(key_in == 13 && inpos2 >= 8) break;
+        if(key_in == 27) return 99;
         if(key_in == 8){
             pwdchk[--inpos2] = '\0';
             if(inpos2 <=0) inpos2 = 0; 
@@ -185,17 +191,25 @@ void input_pwd(char pwd[30]){
         printf("RETRY? (Y/N)");
         do{retry = getch(); if(retry == 'Y' || retry == 'N')break;}while(1);
         if (retry == 'Y') input_pwd(pwd);
+        else return 99;
     }
+    else return 1;
 }
 
 void Registeration(int *numuser){
     struct contact newdata;
-    input_id(newdata.id);
-    input_firstlast(newdata.first,'F');
-    input_firstlast(newdata.last,'L');
-    input_phone(newdata.phone);
-    input_email(newdata.email);
-    input_pwd(newdata.pwd);
+    int step = 0;
+    do{
+        switch(step){
+            case 0: step += input_id(newdata.id);                       break;
+            case 1: step += input_firstlast(newdata.first,'F');         break;
+            case 2: step += input_firstlast(newdata.last,'L');          break;
+            case 3: step += input_phone(newdata.phone);                 break;
+            case 4: step += input_email(newdata.email);                 break;
+            case 5: step += input_pwd(newdata.pwd);                     break;
+            case 6: step++;                                             break;
+        }
+    }while(step <= 6);
 }
 
 void Login(){
