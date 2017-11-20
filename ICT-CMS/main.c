@@ -70,13 +70,13 @@ void listdata (struct contact read[100],int *numuser){
     }
 }
 
-int input_id(char id[8]){
+int input_id(char id[8],char newu){
     int inpos = 0;
     char key_in;
     int setnull = 7;
     do{id[setnull] = '\0';}while(setnull--);
     do{
-        printf("Enter your ID: ");
+        newu == 'N' ? printf("Enter your ID: ") : printf("ID: ");
         printf("%s",id);
         key_in = getch();
         printf("\n");
@@ -148,13 +148,13 @@ int input_email(char email[50]){
     do{
         printf("Enter your Email: ");
         printf("%s",email);
+        if(isconta == 0 || iscontd == 0) printf("\n[WARNING] Invalid Email");
         //printf("\t\t\t\tPOS:%d\tconta:%d\ta_pos%d\tcontd:%d\td_pos:%d\n",inpos,isconta,a_pos,iscontd,d_pos);
         key_in = getch();
         printf("\n");
         if(key_in == 13 && inpos >= 7 && isconta && iscontd) return 1;
         if(key_in == 27) return 99;
         if(key_in == 8){
-            
             email[--inpos] = '\0';
             if(iscontd && inpos <= d_pos){iscontd = 0;d_pos = 99;}
             if(isconta && inpos <= a_pos){isconta = 0;a_pos = 99;}
@@ -216,8 +216,6 @@ int input_pwd(char pwd[30]){
 }
 
 int input_finalize(struct contact muict[100],struct contact newdata,int *numuser){
-    listdata(muict,numuser);
-    printf("%s\n",newdata.id);
     strcpy(muict[*numuser].id    , newdata.id);
     strcpy(muict[*numuser].first , newdata.first);
     strcpy(muict[*numuser].last  , newdata.last);
@@ -235,7 +233,7 @@ void Registeration(struct contact muict[100],int *numuser){
     int step = 0;
     do{
         switch(step){
-            case 0: step += input_id(newdata.id);                       break;
+            case 0: step += input_id(newdata.id,'N');                       break;
             case 1: step += input_firstlast(newdata.first,'F');         break;
             case 2: step += input_firstlast(newdata.last,'L');          break;
             case 3: step += input_phone(newdata.phone);                 break;
@@ -246,8 +244,65 @@ void Registeration(struct contact muict[100],int *numuser){
     }while(step <= 6);
 }
 
-void Login(){
-    printf("Login!\n");
+int login_pwd(char pwd[30]){
+    int inpos = 0;
+    int setnull = 29;
+    char key_in,pwdchk[30];
+    do{pwd[setnull] = '\0'; pwdchk[setnull] = '\0';}while(setnull--);
+    do{
+        printf("Password: ");
+        printf("%s",pwd);
+        key_in = getch();
+        printf("\n");
+        if(key_in == 13 && inpos >= 8) return 1;
+        if(key_in == 27) return 99;
+        if(key_in == 8){
+            pwd[--inpos] = '\0';
+            if(inpos <=0) inpos = 0; 
+        }
+        else if(isalnum(key_in) && inpos < 30)   pwd[inpos++] = key_in;
+    }while(1);
+}
+
+int login_check(struct contact muict[100],struct contact indata,int *numuser){
+    int isfound = 0,i;
+    for(i=0;i<*numuser;i++){
+        printf("|%s| |%s|\n",muict[i].id,indata.id);
+        printf("|%s| |%s|\n\n",muict[i].pwd,indata.pwd);
+        if(strcmp(muict[i].id,indata.id) == 0) {
+            printf("correct 1");
+            if(strcmp(muict[i].pwd,indata.pwd) == 0) {
+                isfound = 1;
+                return i;
+            }
+        }
+    }
+    if(isfound == 0) return -1;
+}
+
+int Login(struct contact muict[100],int *numuser){
+    struct contact indata;
+    char retry;
+    int step = 0;
+    int useridx;
+    do{
+        switch(step){
+            case 0: step += input_id(indata.id,'L'); break;
+            case 1: step += login_pwd(indata.pwd);  break;
+            case 2: 
+                step ++; 
+                useridx = login_check(muict,indata,numuser);
+                break;
+            case 3: 
+                if(useridx == -1){
+                    printf("[ERROR] wrong Username or Password");
+                    printf("Retry? (Y/N)");
+                    do{retry = getch(); if(retry == 'Y' || retry == 'N')break;}while(1);
+                    if(retry == 'Y') step = 0; else return 99;
+                }
+                else printf("Logged in");
+        }
+    }while(step<4);
 }
 
 void home(struct contact muict[100],int *numuser){
@@ -270,10 +325,11 @@ void home(struct contact muict[100],int *numuser){
         home(muict,numuser);
     }
     else if(homecursor == 2) {
-        Login();
+        Login(muict,numuser);
         home(muict,numuser);
     }    
 }
+
 int main()
 {
     struct contact muict[100];
