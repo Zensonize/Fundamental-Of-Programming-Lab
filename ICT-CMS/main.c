@@ -215,16 +215,28 @@ int input_pwd(char pwd[30]){
     else return 1;
 }
 
-int input_finalize(struct contact muict[100],struct contact newdata,int *numuser){
-    strcpy(muict[*numuser].id    , newdata.id);
-    strcpy(muict[*numuser].first , newdata.first);
-    strcpy(muict[*numuser].last  , newdata.last);
-    strcpy(muict[*numuser].phone , newdata.phone);
-    strcpy(muict[*numuser].email , newdata.email);
-    strcpy(muict[*numuser].pwd   , newdata.pwd);
-    *numuser = *numuser + 1;
-    listdata(muict,numuser);
-    outputfile(muict,numuser);
+int input_finalize(struct contact muict[100],struct contact newdata,int *numuser,int *position,char mode){
+    if(mode == 'N'){
+        strcpy(muict[*numuser].id    , newdata.id);
+        strcpy(muict[*numuser].first , newdata.first);
+        strcpy(muict[*numuser].last  , newdata.last);
+        strcpy(muict[*numuser].phone , newdata.phone);
+        strcpy(muict[*numuser].email , newdata.email);
+        strcpy(muict[*numuser].pwd   , newdata.pwd);
+        *numuser = *numuser + 1;
+        listdata(muict,numuser);
+        outputfile(muict,numuser);
+    }
+    else if(mode == 'U'){
+        strcpy(muict[*position].id    , newdata.id);
+        strcpy(muict[*position].first , newdata.first);
+        strcpy(muict[*position].last  , newdata.last);
+        strcpy(muict[*position].phone , newdata.phone);
+        strcpy(muict[*position].email , newdata.email);
+        strcpy(muict[*position].pwd   , newdata.pwd);
+        listdata(muict,numuser);
+        outputfile(muict,numuser);
+    }
     return 1;
 }
 
@@ -239,9 +251,108 @@ void Registeration(struct contact muict[100],int *numuser){
             case 3: step += input_phone(newdata.phone);                 break;
             case 4: step += input_email(newdata.email);                 break;
             case 5: step += input_pwd(newdata.pwd);                     break;
-            case 6: step += input_finalize(muict,newdata,numuser);  break;
+            case 6: step += input_finalize(muict,newdata,numuser,numuser,'N');  break;
         }
     }while(step <= 6);
+}
+
+void editinfo_home(struct contact muict[100],int *numuser,int *userindex){
+    struct contact me;
+    int editmeptr = 1;
+    int step = 0;
+    char editmeptr_temp;
+    do{
+        //system("cls");
+        printf("My profile\n");
+        printf("---------------------------------------------------------------------------------------------\n");
+        editmeptr == 1 ? printf("-->\t[1] Edit ID\n")             : printf("\t [1] Edit ID\n");
+        editmeptr == 2 ? printf("-->\t[2] Edit First name\n")     : printf("\t [2] Edit First name\n"); 
+        editmeptr == 3 ? printf("-->\t[3] Edit Last name\n")      : printf("\t [3] Edit Last name\n"); 
+        editmeptr == 4 ? printf("-->\t[4] Edit Phone number\n")   : printf("\t [4] Edit Phone number\n"); 
+        editmeptr == 5 ? printf("-->\t[5] Edit Email\n")          : printf("\t [5] Edit Email\n"); 
+        editmeptr == 6 ? printf("-->\t[6] Edit Password\n")       : printf("\t [6] Edit Password\n"); 
+        editmeptr == 0 ? printf("-->\t[0] Back\n")                : printf("\t [0] Back\n");
+        while(!kbhit());
+        editmeptr_temp = getch();
+        if(editmeptr_temp == 13) break;
+        if(editmeptr_temp >= '0' && editmeptr_temp <= '6'){
+            editmeptr = (int) editmeptr_temp - 48;
+        }
+    }while(1);
+    if(editmeptr == 0) step = 99; else step = 0;
+    do{
+        switch(step){
+            case 0: 
+                    strcpy(me.id    ,   muict[*userindex].id);
+                    strcpy(me.first ,   muict[*userindex].first);
+                    strcpy(me.last  ,   muict[*userindex].last);
+                    strcpy(me.phone ,   muict[*userindex].phone);
+                    strcpy(me.email ,   muict[*userindex].email);
+                    strcpy(me.pwd   ,   muict[*userindex].pwd);        step = editmeptr;                break;
+            case 1: step += input_id(me.id,'N');                    if(step == 2) step = 8;             break;
+            case 2: step += input_firstlast(me.first,'F');          if(step == 3) step = 8;             break;
+            case 3: step += input_firstlast(me.first,'L');          if(step == 4) step = 8;             break;
+            case 4: step += input_phone(me.phone);                  if(step == 5) step = 8;             break;
+            case 5: step += input_email(me.email);                  if(step == 6) step = 8;             break;
+            case 6: step += input_pwd(me.pwd);                      if(step == 7) step = 8;             break;
+            case 7: break; //update id stack
+            case 8: step += input_finalize(muict,me,numuser,userindex,'U');
+        }
+    }while(step<9);
+    if(editmeptr != 0) editinfo_home(muict,numuser,userindex);
+}
+
+void admin_home(struct contact muict[100],int *numuser,int *userindex){
+    int admptr = 1;
+    char admptr_temp;
+    do{
+        //system("cls");
+        printf("WELCOME to ADMIN ICT-CMS\n");
+        admptr == 1 ? printf("-->\t[1] Edit User's Contact\n")    : printf("\t [1] Edit User's Contact\n");
+        admptr == 2 ? printf("-->\t[2] Show all contact\n")       : printf("\t [2] Show all contact\n"); 
+        admptr == 3 ? printf("-->\t[3] Search for a contact\n")   : printf("\t [3] Search for a contact\n"); 
+        admptr == 4 ? printf("-->\t[4] Delete user's contact\n")  : printf("\t [4] Delete user's contact\n"); 
+        admptr == 0 ? printf("-->\t[0] exit\n")                   : printf("\t [0] exit\n");
+        while(!kbhit());
+        admptr_temp = getch();
+        if(admptr_temp == 13) break;
+        if(admptr_temp >= '0' && admptr_temp <= '4'){
+            admptr = (int) admptr_temp - 48;
+        }
+    }while(1);
+    switch(admptr){
+        case 1: break;
+        case 2: listdata(muict,numuser);                                    break;
+        case 3: break;
+        case 4: break;
+    }
+    if(admptr != 0) admin_home(muict,numuser,userindex);
+}
+
+void user_home(struct contact muict[100],int *numuser,int *userindex){
+    int userptr = 1;
+    char userptr_temp;
+    do{
+        //system("cls");
+        printf("WELCOME to ICT-CMS %s\n",muict[*userindex].id);
+        userptr == 1 ? printf("-->\t[1] Edit my Contact\n")         : printf("\t[1] Edit my Contact\n");
+        userptr == 2 ? printf("-->\t[2] Show all contact\n")        : printf("\t[2] Show all contact\n"); 
+        userptr == 3 ? printf("-->\t[3] Search for a contact\n")    : printf("\t[3] Search for a contact\n"); 
+        userptr == 0 ? printf("-->\t[0] exit\n")                    : printf("\t[0] exit\n");
+        while(!kbhit());
+        userptr_temp = getch();
+        if(userptr_temp == 13) break;
+        if(userptr_temp >= '0' && userptr_temp <= '3'){
+            userptr = (int) userptr_temp - 48;
+        }
+    }while(1);
+    switch(userptr){
+        case 1: editinfo_home(muict,numuser,userindex);         break;
+        case 2: listdata(muict,numuser);                                    break;
+        case 3:break;
+        case 4:break;
+    }
+    if(userptr != 0) user_home(muict,numuser,userindex);
 }
 
 int login_pwd(char pwd[30]){
@@ -264,15 +375,16 @@ int login_pwd(char pwd[30]){
     }while(1);
 }
 
-int login_check(struct contact muict[100],struct contact indata,int *numuser){
+int login_check(struct contact muict[100],struct contact indata,int *numuser,char *roles){
     int isfound = 0,i;
     for(i=0;i<*numuser;i++){
         printf("|%s| |%s|\n",muict[i].id,indata.id);
         printf("|%s| |%s|\n\n",muict[i].pwd,indata.pwd);
         if(strcmp(muict[i].id,indata.id) == 0) {
-            printf("correct 1");
             if(strcmp(muict[i].pwd,indata.pwd) == 0) {
                 isfound = 1;
+                if(muict[i].id[0] == '0' && muict[i].id[1] == '0') *roles = 'A';
+                else *roles = 'U';
                 return i;
             }
         }
@@ -280,29 +392,33 @@ int login_check(struct contact muict[100],struct contact indata,int *numuser){
     if(isfound == 0) return -1;
 }
 
-int Login(struct contact muict[100],int *numuser){
+void Login(struct contact muict[100],int *numuser){
     struct contact indata;
     char retry;
     int step = 0;
     int useridx;
+    char roles;
     do{
         switch(step){
             case 0: step += input_id(indata.id,'L'); break;
             case 1: step += login_pwd(indata.pwd);  break;
             case 2: 
                 step ++; 
-                useridx = login_check(muict,indata,numuser);
+                useridx = login_check(muict,indata,numuser,&roles);
                 break;
             case 3: 
                 if(useridx == -1){
                     printf("[ERROR] wrong Username or Password");
                     printf("Retry? (Y/N)");
                     do{retry = getch(); if(retry == 'Y' || retry == 'N')break;}while(1);
-                    if(retry == 'Y') step = 0; else return 99;
+                    if(retry == 'Y') step = 0; else break;
                 }
-                else printf("Logged in");
+                else step++;
         }
     }while(step<4);
+    if (useridx != -1){
+        roles == 'A' ? admin_home(muict,numuser,&useridx): user_home(muict,numuser,&useridx);
+    }
 }
 
 void home(struct contact muict[100],int *numuser){
