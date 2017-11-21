@@ -392,7 +392,23 @@ void editinfo_home(struct contact muict[100],int *numuser,int *userindex){
     if(editmeptr != 0) editinfo_home(muict,numuser,userindex);
 }
 
-void edituserinfo(struct contact muict[100],int *numuser){
+void deleteu(struct contact muict[100],int *numuser,int *userindex){
+    char confirm,i;
+    do{
+        printf("Confirm delete (Y/N)");
+        confirm = getch();
+        if(confirm == 'Y' || confirm == 'N') break;
+    }while(1);
+    if(confirm == 'Y'){
+        for(i=*userindex;i<*numuser;i++){
+             muict[i] = muict[i+1];
+        }
+        *numuser = *numuser-1;
+        outputfile(muict,numuser);
+    }
+}
+
+void edituserinfo(struct contact muict[100],int *numuser,char mode){
     int setnull = 7,results = 0,inpos = 0,i,resultpos;
     char key_in,search[8];
     do{search[setnull] = '\0';}while(setnull--);
@@ -411,8 +427,11 @@ void edituserinfo(struct contact muict[100],int *numuser){
         if(key_in == 8 ){   search[--inpos] = '\0';  if(inpos <=0) inpos = 0;}
         else if(isdigit(key_in) && inpos < 7)   search[inpos++] = key_in;
     }while(1);
-    if(resultpos != -1 && results != 0){
+    if(resultpos != -1 && results != 0 && mode == 'E'){
         editinfo_home(muict,numuser,&resultpos);
+    }
+    else if(resultpos != -1 && results != 0 && mode == 'D'){
+        deleteu(muict,numuser,&resultpos);
     }
 }
 
@@ -435,10 +454,10 @@ void admin_home(struct contact muict[100],int *numuser,int *userindex){
         }
     }while(1);
     switch(admptr){
-        case 1: edituserinfo(muict,numuser);                                break;
+        case 1: edituserinfo(muict,numuser,'E');                            break;
         case 2: listdata(muict,numuser);                                    break;
         case 3: advancesearch(muict,numuser);                               break;
-        case 4: break;
+        case 4: edituserinfo(muict,numuser,'D');                            break;
     }
     if(admptr != 0) admin_home(muict,numuser,userindex);
 }
@@ -464,7 +483,6 @@ void user_home(struct contact muict[100],int *numuser,int *userindex){
         case 1: editinfo_home(muict,numuser,userindex);         break;
         case 2: listdata(muict,numuser);                        break;
         case 3: advancesearch(muict,numuser);                   break;
-        case 4:break;
     }
     if(userptr != 0) user_home(muict,numuser,userindex);
 }
