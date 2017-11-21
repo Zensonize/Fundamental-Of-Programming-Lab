@@ -70,6 +70,16 @@ void listdata (struct contact read[100],int *numuser){
     }
 }
 
+void showdata(struct contact muict[100],int *position){
+    printf("%2d  |"     ,muict[*position].idx);
+    printf("   %7s   |" ,muict[*position].id);
+    printf(" %s"        ,muict[*position].first);
+    printf(" %-15s\t|"  ,muict[*position].last);
+    printf("   %10s\t|" ,muict[*position].phone);
+    printf("  %-25s\t|" ,muict[*position].email);
+    printf("\n");
+}
+
 int input_id(char id[8],char newu){
     int inpos = 0;
     char key_in;
@@ -302,6 +312,86 @@ void editinfo_home(struct contact muict[100],int *numuser,int *userindex){
     if(editmeptr != 0) editinfo_home(muict,numuser,userindex);
 }
 
+void tableprint(){
+    printf("\t\tTABLE OF USERS\n");
+    printf("IDX |  Student ID |\t\tNAME\t\t|     PHONE  \t|\t    E-MAIL\t\t|\n");
+    printf("-----------------------------------------------------");
+    printf("--------------------------------------------\n");
+    printf("\n");
+}
+
+void searchidphone(struct contact muict[100],char search[11],int *numuser, char mode){
+    int setnull = 7,results = 0,inpos = 0,i;
+    char key_in;
+    do{search[setnull] = '\0';}while(setnull--);
+    do{
+        results = 0;
+        mode == 'P' ? printf("Search Phone") :printf("Search ID: ");
+        printf("%s\n",search);
+        tableprint();
+        for(i=0;i<*numuser;i++){
+            if(strstr(muict[i].id,search) != NULL && mode != 'P') {results++; showdata(muict,&i);}
+            else if(strstr(muict[i].phone,search) != NULL && mode == 'P')  {results++; showdata(muict,&i);}
+        }
+        printf("RESULTS: %d\n",results);
+        key_in = getch();
+        if(key_in == 13 || key_in == 27) break;
+        if(key_in == 8){   search[--inpos] = '\0';  if(inpos <=0) inpos = 0;}
+        else if(isdigit(key_in) && inpos < 7 && mode != 'P')   search[inpos++] = key_in;
+        else if(isdigit(key_in) && inpos < 9 && mode == 'P')   search[inpos++] = key_in;
+    }while(1);
+}
+
+void searchnamemail(struct contact muict[100],char search[50], int *numuser, char mode){
+    int setnull = 49,results = 0,inpos = 0,i;
+    char key_in;
+    do{search[setnull] = '\0';}while(setnull--);
+    do{
+        results = 0;
+        printf("Search ID: ");
+        printf("%s\n",search);
+        tableprint();
+        for(i=0;i<*numuser;i++){
+            if(mode == 'N'){if(strstr(muict[i].first,search) != NULL || strstr(muict[i].last,search) != NULL) {results++; showdata(muict,&i);}}
+            else{if(strstr(muict[i].email,search) != NULL) {results++; showdata(muict,&i);}}
+        }
+        printf("RESULTS: %d\n",results);
+        key_in = getch();
+        if(key_in == 13 || key_in == 27) break;
+        if(key_in == 8){   search[--inpos] = '\0';  if(inpos <=0) inpos = 0;}
+        else if(isalpha(key_in) && inpos < 49)   search[inpos++] = key_in;
+        else if(key_in == '@' || key_in == '.' && inpos < 49) search[inpos++] = key_in;
+    }while(1);
+}
+
+void advancesearch(struct contact muict[100],int *numuser){
+    struct contact search;
+    int searchptr = 1;
+    char searchptr_temp;
+    do{
+        system("cls");
+        printf("WELCOME to ICT-CMS Advance Search System\n");
+        searchptr == 1 ? printf("-->\t[1] Search by ID\n")             : printf("\t[1] Search by ID\n");
+        searchptr == 2 ? printf("-->\t[2] Search by Name\n")           : printf("\t[2] Search by Name\n");  
+        searchptr == 3 ? printf("-->\t[3] Search by Phone number\n")   : printf("\t[3] Search by Phone number\n"); 
+        searchptr == 4 ? printf("-->\t[4] Search by Email\n")          : printf("\t[4] Search by Email\n"); 
+        searchptr == 0 ? printf("-->\t[0] Back\n")                     : printf("\t[0] Back\n");
+        while(!kbhit());
+        searchptr_temp = getch();
+        if(searchptr_temp == 13) break;
+        if(searchptr_temp >= '0' && searchptr_temp <= '4'){
+            searchptr = (int) searchptr_temp - 48;
+        }
+    }while(1);
+    switch(searchptr){
+        case 1: searchidphone(muict,search.id,numuser,'I');         break;
+        case 2: searchnamemail(muict,search.first,numuser,'N');     break;
+        case 3: searchidphone(muict,search.id,numuser,'P');         break;
+        case 4: searchnamemail(muict,search.email,numuser,'M');     break;
+    }
+    if(searchptr != 0) advancesearch(muict,numuser);
+}
+
 void admin_home(struct contact muict[100],int *numuser,int *userindex){
     int admptr = 1;
     char admptr_temp;
@@ -348,8 +438,8 @@ void user_home(struct contact muict[100],int *numuser,int *userindex){
     }while(1);
     switch(userptr){
         case 1: editinfo_home(muict,numuser,userindex);         break;
-        case 2: listdata(muict,numuser);                                    break;
-        case 3:break;
+        case 2: listdata(muict,numuser);                        break;
+        case 3: advancesearch(muict,numuser);                   break;
         case 4:break;
     }
     if(userptr != 0) user_home(muict,numuser,userindex);
