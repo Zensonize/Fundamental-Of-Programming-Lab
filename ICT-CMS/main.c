@@ -94,6 +94,14 @@ void showdata(struct contact muict[100],int *position){
     printf("\n");
 }
 
+void show1data(struct contact user){
+    printf("ID: %7s   \n" ,user.id);
+    printf("Name: %s %s\n",user.first,user.last);
+    printf("Phone: %s\n" ,user.phone);
+    printf("Email: %s\n" ,user.email);
+    printf("\n");
+}
+
 int input_id(char id[8],char newu){
     int inpos = 0;
     char key_in;
@@ -176,7 +184,7 @@ int input_email(char email[50]){
         system("cls");
         printf("Enter your Email: ");
         printf("%s",email);
-        if(isconta == 0 || iscontd == 0) printf("\n[WARNING] Invalid Email");
+        if(isconta == 0 || iscontd == 0) printf("\n\n\n\n\n[WARNING] Invalid Email");
         //printf("\t\t\t\tPOS:%d\tconta:%d\ta_pos%d\tcontd:%d\td_pos:%d\n",inpos,isconta,a_pos,iscontd,d_pos);
         key_in = getch();
         printf("\n");
@@ -282,6 +290,7 @@ int duplicatecheck(struct contact muict[100],struct contact newdata,int *numuser
 void Registeration(struct contact muict[100],int *numuser){
     struct contact newdata;
     int step = 0;
+    char conf;
     do{
         switch(step){
             case 0: step += input_id(newdata.id,'N');                       break;
@@ -290,11 +299,19 @@ void Registeration(struct contact muict[100],int *numuser){
             case 3: step += input_phone(newdata.phone);                 break;
             case 4: step += input_email(newdata.email);                 break;
             case 5: step += input_pwd(newdata.pwd);                     break;
-            case 6: if(duplicatecheck(muict,newdata,numuser) == -1)         step += input_finalize(muict,newdata,numuser,numuser,'N');  
-                    else {printf("Error Duplicated Data"); Redirecting(4);  step++;}
+            case 6: do{
+                        system("cls");
+                        printf("Please check your info\n"); show1data(newdata); 
+                        printf("Confirmed? (Y/N)");
+                        conf = getch();
+                        if(conf == 'Y' || conf == 'N') break;
+                    }while(1);
+                    if(conf == 'Y') step++; else step = 0; break;
+            case 7: if(duplicatecheck(muict,newdata,numuser) == -1)         step += input_finalize(muict,newdata,numuser,numuser,'N');  
+                    else {printf("\n\n\n[ERROR] Duplicated Data\n\t"); Redirecting(4);  step++;}
                     break;
         }
-    }while(step <= 6);
+    }while(step <= 7);
 }
 
 void tableprint(){
@@ -386,7 +403,11 @@ void editinfo_home(struct contact muict[100],int *numuser,int *userindex){
     char editmeptr_temp;
     do{
         system("cls");
-        printf("My profile\n");
+        printf("Profile\n");
+        printf("ID: %s\n",muict[*userindex].id);
+        printf("Name: %s %s\n",muict[*userindex].first,muict[*userindex].last);
+        printf("Phone: %s\n",muict[*userindex].phone);
+        printf("Email: %s\n",muict[*userindex].email);
         printf("---------------------------------------------------------------------------------------------\n");
         editmeptr == 1 ? printf("-->\t[1] Edit ID\n")             : printf("\t [1] Edit ID\n");
         editmeptr == 2 ? printf("-->\t[2] Edit First name\n")     : printf("\t [2] Edit First name\n"); 
@@ -503,7 +524,7 @@ void admin_home(struct contact muict[100],int *numuser,int *userindex){
     }while(1);
     switch(admptr){
         case 1: edituserinfo(muict,numuser,'E');                            break;
-        case 2: listdata(muict,numuser);                                    break;
+        case 2: listdata(muict,numuser);    printf("Press any key to Continue\n");  while(!kbhit());      break;
         case 3: advancesearch(muict,numuser);                               break;
         case 4: edituserinfo(muict,numuser,'D');                            break;
         case 5: edituserinfo(muict,numuser,'G');                            break;
@@ -530,9 +551,9 @@ void user_home(struct contact muict[100],int *numuser,int *userindex){
         }
     }while(1);
     switch(userptr){
-        case 1: editinfo_home(muict,numuser,userindex);         break;
-        case 2: listdata(muict,numuser);                        break;
-        case 3: advancesearch(muict,numuser);                   break;
+        case 1: editinfo_home(muict,numuser,userindex);                     break;
+        case 2: listdata(muict,numuser); printf("Press any key to Continue\n");while(!kbhit());       break;
+        case 3: advancesearch(muict,numuser);                               break;
     }
     if(userptr != 0) user_home(muict,numuser,userindex);
 }
