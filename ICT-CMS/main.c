@@ -28,200 +28,6 @@ void Redirecting(int duration){
     }
 }
 
-void credit(){
-    printf("    ``                                                             ``::-.`                                                                                                                ``..-----.......................................................\n"); Sleep(200);
-    printf("    ``                                                            ``::::.`````                                                                                                                ``..........................................................\n"); Sleep(200);
-    printf("    ``                                                           ` ./::-```..`                                                                                                                    ```.....................................................\n"); Sleep(200);
-    printf("    ``                                                          ` `::--.``.--`                                                                                                                         ```................................................\n"); Sleep(200);
-    printf("    ``                                                        `   .:::-` `.--`                                                                                                                              ```...........................................\n"); Sleep(200);
-    printf("    ``                                                       ``   -:-:.   -:-`                                                                                                                                    `````..........................```````..\n"); Sleep(200);
-    printf("``````                                                      `    `::::.` `:/:.`                                                                                                                                             `...........```````         ``\n"); Sleep(200);
-    printf("...```........````````````````````                               .:-::.``.:///:.`                                                                                                                                           ``.......`.```               `\n"); Sleep(200);
-    printf("  ` ````....------------.....................``````````          -:-::.``.:////-`                                                                                                                                           ``.........``                 \n"); Sleep(200);
-    printf("    ``    `````.....----:--::------::::::://///::-----.........``:--/:.``.:////-`  ``........``````````````......`.``````````````````````````````````   ```````````` `   ``                            `````````` ``   ````````.........`.........````   `\n"); Sleep(200);
-    printf("    ``                   ````````````........--------------:::-..:--/:.``.://+/.```..---:::::::::::://///////:::::::::::::::::::::::-----:::-----------::----------.................`.......`........----..........----------.``.....----------....````...\n"); Sleep(200);
-    printf("    ``                                                    ````  -:--::.``.:///.````        ```````````````````````````````.....-:::::::::/::::::::--.......``````````...----...---.....---.---...--------...`..........```````                            \n"); Sleep(200);
-    printf("    ``                                                          ---::-.``.://:.` ``                                                   `````````````````               ```````  ``````` ``   `                                                             \n"); Sleep(200);
-    printf("    ``                                                         `:--::-.``.:/+/.``                                                                                                                                                                         \n"); Sleep(200);
-    printf("     `                                                         `:--::-.`.-///-`                                                             `    `````````                                                                                                \n"); Sleep(200);
-    printf("     `                                                         .--:::....:///.                                                   ````````````````````````````````                                                                                         \n"); Sleep(200);
-    printf("     `                                                         .--::-....:///`                                          ````...----::-:-----.....`...``````````` ``````                                                                                   \n"); Sleep(200);
-    printf("     `                                                         ---::-....://:`                               ```...-----::::::::///////////::::::---::----......``````````                                                                                \n"); Sleep(200);
-    printf("     `                                                         ---::-..`.://:`                         ```..---::///++////+///+++++///+/////////:::::::::::::::::---........```                                                                           \n"); Sleep(200);
-    printf("    ``                                                        `:--::-..`.://:`                     ````.--:::://////::::::::::::::----::------------::::::://///+++////::--:::.````                                                                       \n"); Sleep(200);
-    printf("    ``                                                        `:-::-.....://:`                `````.---::://+///////:://////::::-:----:::-----------....-----::::///++++o+///:::.``  ````                                                                 \n"); Sleep(200);
-    printf("     `                                                        `:-::-..``.::/:`             `..--:::://///+++///:://://:/::::/::::::::--:::----------::--------:::::::::::://+///::-.`   ````                                                              \n"); Sleep(200);
-    printf("    ``                                                        .:-::-..``-::/:`        ``..-:::::://////////////::::::/::-----:::::::::-----------..--:::::::::/:::////:/://://:::::-.``   ````                                                            \n"); Sleep(200);
-    printf("``` ``           ``````````    `                              .:-::-..``-::/:`     ``.--:::/://////:://////////:::::::/::::::::--::::///////:::------..--::::::---:///++/////+//:-//::-.``   ```                                                          \n"); Sleep(200);
-    printf("--.````....``.``.............`...........``````      ``````` `-:-::...``-::/:`   `.-:::////////////://////++++++o+++//::::------::::::::/::///++++/:///::::::::::---::://////++ossssso+/:--.`` ``                                                         \n"); Sleep(200);
-    printf("..`````....-----::------...--.........................----...`::-:-...`.:::/:-..-:://+++////////++/+/+/++++ooooo++++++++o+oooo+/////:-://++oss++sssysssyyso++////+++/:/++//:///:/+oyyyysso+/:--.```                                                       \n"); Sleep(200);
-    printf("     `        ``````.......----------------..--::-----://:-...::-:-...`.:::///:://oo++///////++++++oosssooosssyyso+//++//ooossooosssso+++++///++//+osssyysyhhyyyyyysyyssoooooooo+++///+oossoso/:-.```                                                     \n"); Sleep(200);
-    printf("     `                         ````````........------:::::-...:--:-..``.:::////+o++++//+++++++//+ooososoossooooo++oo+/++//+++++o+++oosyyyyyyysssooosooosyyyyyyyhhhhhhhdmmmdhhhyyyhyyyysooooo+osso/--.``                                                   \n"); Sleep(200);
-    printf("     `                                                  ``````:--:-..``.:::////oo++/+++oo+++o+ooso++ooooossysssssyhyo//+o+//://++////+++sssyyhhddddddddddddddhyyyyyhyhhhdmddddhddmdddddhhhyysso+oo+/:.` ``                                                \n"); Sleep(200);
-    printf("     `                                                       `:--:-..``.::::///+oo+++oso+/+sso+++/+syssshhhyhdhysssyssosyyys+///::::/+/////+/++///++oosssyssssysyysyhhddmmmmmmmddddmdyhdhdddddyshyyso+:.````                ```````    ``````           ``\n"); Sleep(200);
-    printf("     `                                                       `:--:-..``.:::://+ss++ooo+/+oyo+osysyyssyysyhdhhyyssyyssyyyyyyysoooo++++//+++/:///+o+++/+//++o+ossosysyyhdddddhdmmmmNNNmmdhhyyhdhddmmmmmdhs/-.`.``````..........-----.................``````.\n"); Sleep(200);
-    printf("::-.`   `.-.`                                                .:--:...```:::://o+++oo+++ssooyddhhhyhdhhhdyyhhdmmddhyyyyyhhyyyhyhyysossyo/+s++////+++oo+++ooooosyyyyhhyhhdhhhdmmmddmmmmmNNNNNmdhyyyhddddyyyy+:........--------::---------------------------:\n"); Sleep(200);
-    printf(":.```  `//////-                                             `-:--:...```-::://++oooooooooymdhhhhdhyhmmdhdhyshhyyyyyhyyyyyyhssyyhyhyo++//:/+osssyyhyhysyyhhhhhyyysyyhddhhdhddhhmdmmmNmmNNmNNMNNmmhyyyysosyyhhy+:-------------------------:----:::::-::::::/\n"); Sleep(200);
-    printf(":.``` ```::---+/`                                          `.::---...```-::///++soosssosmNmhhdhyyyyssshyssssosyhyyyysssyyysoyhhhhyyo+ssssoosssyyyyyyhyhhhddddddddddhhdmmmmmNmNmNNNNNNmmmNNNNNNMMMMNNNmdhhhhyhhs+:-................`.......``....``........\n"); Sleep(200);
-    printf(":.```````.::..-+/`                                        `.-::---..```.:::///+sssyysydmmdddhddhhysyydddhhyyyssssyhyyssyyyyyyhyhhdddmddddmmmmmmmmmdmmmmmmdmmmNNNNNNNNNNNNNmmNNmmmmmmmmNNNNNNNNNMMNMMMMNNNmmmhyysso/:--........````````..``````````````````\n"); Sleep(200);
-    printf(":.`  ``.``-:-..:+/                                     ```-::::---...``.:::///oyhhhhdmmmddhhhdmmmddddhhhddddhhhyyssossssssoooo+oosyyyhhhddmmmNNNNNNNMMMMMNMMNNNMNNNNmmmNNmmmmmmmmmmmmmmNNNNmmmNNNNNNNNMNNNNNmddhhyso/:.```````````````````````````````````\n"); Sleep(200);
-    printf(":-    ````.::-.-++-         ````````````````````````````.://:/:--...```.:::///osddhhhdhhyyhddmmmmmmmNNNNNNmmdhhhyyysssoosyyyhysyssoossooyyhyhddmNNmmNNMMMMNNNNNNNmmNmmmmdddddddddmmmmmmmmmNmNNNNMMNNNNNNNNNNNNNmmdhdyo/-.````````````````````````.````....\n"); Sleep(200);
-    printf("::.` `````.:::..:/+`       ```````````````````````````.-:/o+::---..````.:::///ohyhdmmmhdmdddmNNmmdmmmmmdNNNmmNNNmmmmmddhyyyyhyyhhyhyyhdddmmNNNNNNNNNNNNNmmmdddddddddddmmdddhdddddddmddmmmmmmNNNNNNNMMMMNNNMNNNNNNNmmddhs+:....--.-------------------------\n"); Sleep(200);
-    printf(":::.```````-::..-/+/      ````........................-:+ss+::---..````-:::///ohmmdddmddmNNNmhmmmmdddhhhdddmmmmmmmmmmddmmmmmmmdmdmNmNNNNNNNMNNNNNmmdddddddddddhhhhhhhhhhdhdddddhhhhhhhhhdddmmmmmNNNNNNNMMMMNNNNNNNNNNmddhs/:---://///////////+////++++++++\n"); Sleep(200);
-    printf("::-````````-::-..:+o`    ```.--:::::::::::::::::::--.-:+oso+::--..````.:::////odmmmNNmmmmmNNNmmNmNNmmmmdmddmmdddddmmmmmmmNmmNNNNNNNNNNNNNmmmmddhhyyyyyyssssossossssssyyyyyyyyyhhhhhhhhhhhhhhdhhdmdmNmNNNNNNNNNNNNNNNNNNNmdys+::/++///+o+o+oooo++ooosoosoos\n"); Sleep(200);
-    printf(":::````````-::-...:+:    ``..-/+o+ooo+++o++o+++++/:--+oooso+::--..````-:::////omNNmmNNNNmddmNNNmmmmdddhddmmmmmmmmmmmmdmmddddmmmNNNNmdddhyyssoo+//::::---------::::://++++ooooooooosssyyyyyhhhhhyhdddmmNNNNNNNNNNNNmNNmNNNNmdho/::/+++++oooooo+oosoossososs\n"); Sleep(200);
-    printf("::-````````::::-..-/o`   ``..:/osssssssssossso+++/:-+ssooss/:---..```.::::////sNNNNNNNmmdddddddmmmmmmmmmmNNmmmmmNNNNNNmmmmmmdmddhyss+//:---...........`..........-----:::///++++////++++ooosssssssyyhhhmNNNNNNNNNNNNNNNNNmmmmhs/:/ooooooooo++ososossssssss\n"); Sleep(200);
-    printf("::-````````::::-.../o:   ``..:+osssssssssssssooo+/-/oo+osso::---.````.::::////omNNNNNNNNmmmmmmmmmmNNNNmNNNNNNmmNmNNmmdhyyyyyso+/::--...```````````````````............----::::////////////+++o+ooossssyhddmmNMMNNmNNmNNmmNmmdhys/:/++osossoosssssssyssyysy\n"); Sleep(200);
-    printf(":::.```````-::::...:+o   ``..:+ossssssysssysssoo/::os++sys+::--..````.::::////odNNNNNNNNNNNNNNNNNNmmNNNNNNNmmmmddhhyyssooo+/:---...``````````````````````````..............-----::::::::////////+++++oosyyhdmNMMMMNNMNNNmmmmmdys+//+//+oooossossoossssssss\n"); Sleep(200);
-    printf("/::-``````.-::::....+s.  ```.-/ssyssssssssyssso+::+ssooyys+::--..````.::::///+smNNNNNNNMMNNNNNNNmNNNNNNNNNmddyyysoooo+//::--....````````````````````````````.....................-------:::::::////+++ooosyyhmNMMMMMMNNmmmNNmmdhs+/+++++++++oooooossssssss\n"); Sleep(200);
-    printf("/:::-````..-::::-.../++  ```.-/ossossssssssoso+:-/osssyhhs/::--..````.::::////yNNNNNMMNMMNNNNNNNmNNNNNNmmdhyysoo+++/:::--.........```````````````````````.............................------:::::////++++ossyhdNMMMMMNNNNNNNmmmmys+/+//+++o++++++ooooooooo\n"); Sleep(200);
-    printf("/:::-``````-///::...:+o  ```.-/oooooooooooooo+::++sysyhdh+-:---..````.:::////+hNNNNMMMNNNNNNNmmmNNNNNNmhysoo++//:::----...........`````````````````````....................................------:::///++++ossydNMMMMMNNNNmmdmmmdso++://+++++++++++++++++o\n"); Sleep(200);
-    printf("::::-``````.://::...-+o   ``.-/++oooo+++oo+o+//osshyyydms/-:---.`````.:::////+hNNNNNNNNNNNNNNmmNNNNmdhyo++///::------............````````````````````.......................................-------:::///++++osydNMMMMNNNmmmmmmdhooo/::/+++///++/++++++/++\n"); Sleep(200);
-    printf("::::-``````.-/:::....+o   ``.-:/+++++++++///:/+ossyyhhdd+----:-.`````.:::////odMNNNNNNNNNNNNNNNNNmdhs+//::::--------..............`````...........`............................................-------::///+++oosdNMMMMMNNNNmdhy+/++/::///////////////////\n"); Sleep(200);
-    printf("::::.```````./:::..../o   ``.-:/+++++++////::o+oysyyhdms:-:---..`````-::////+omMMMMNNNNNNNNNNNmmhso/::::::-------...............................................................................-------:::///++ooymMMMMNNddhyso+:::/:::///////////////////\n"); Sleep(200);
-    printf("::::.```````-::::..../+   ```.-://///////:::+oossyhhddy/-:----..`````-::////+sNMMNNMMMNNNNNNNmhs++/::::-----..-..............................----...-------------.................-.--..-..---..---------:::///+osymMMMMMNds+/:/:::-:-:///////////////////\n"); Sleep(200);
-    printf("::::````````-::::-.`./+     ``````.........:sossyyydmd+-.:---..`````.:://///+yNMNMMMMMMNNmNmdyo+//:::-----..................................--.....------------------.....--.------------------..----------::://++oyNMMMMNNmho/:------::::::::::----------\n"); Sleep(200);
-    printf(":::-````````.:::::.`./+` `````````````````.+sosshydmNdo-::---..`````-:://///odMMMMMMMNNNNmdhs+/:::-----.................................--------------------------------------------------------------------::://++ohNMMMMNNmdh+-.......`````````` `    ` \n"); Sleep(200);
-    printf(":::-.````````-:::-.`-++``````````````````.:osoyyyhdmNNdhs+:-..`````.:://///+sNMMMMMMNNmmdhs+/::::---.....................................-------------------------------------------------------------------:::://+osmMMMMNNNmdhs:...`````````            \n"); Sleep(200);
-    printf(":::-.````````.:::-.`:+o..................-+syssyymmNNNNNNh/-.`````.-:::////+hMMMMMMNmmmdys+/:::----.----.--.................`..................---------:---------::-----::----------------------------------:::::/+ohNMMMMMNmmdhs/-...````````           \n"); Sleep(200);
-    printf(":::-. ```````.-::-``:/s.................--+sysyyhmmNNNNNMmo-.`````.:::////+smMMMMNNmmdhyo+/:::------------................``..`................-----------------:::--::::::-----------------------------------:::://+smMMMMMNNNmho/::...``````````````````\n"); Sleep(200);
-    printf("::::.` ``````.-::-``/+/```````````````...-:sshhhmNNNMMNMMNh+-`````.-::////odMMMMNmmddhs+//::-----------.................`````````..`.............-------------------------:------------------------------------::::/+ohNMMMMNNNNmy++/:--..``.`````````````\n"); Sleep(200);
-    printf("-::-.  ``````.-::.`./+:   ````.....```....:oydyhdmNNNNMMMNNms:-....-::///+hNMMNNmmdhyo+//::----------................`..``````````````````...........--------------------------------------------:-:-----------:::://+smMMMMMNNNNdooo+::--............````\n"); Sleep(200);
-    printf(":---` ```````.---.`./+-    ```......`````.:oyhymdmNNMNMMNMNNNmysso+//://+yNMMNmmddhso///::--------...............`....``````````````````````...................-.----------------------------------:------------::::/+sdNMMMMMMNNNds+//::.................\n"); Sleep(200);
-    printf("---.  ```````.---.`./o.     ``......`````./shhhmmmNNMMMMMNNNNMNNNNmyo/++ymMMNmddhyo+//::-:---------..............```````````````````````....................................-------------------:--:::----------:::::/+ohNNMNMMMMNNmhs++/:-.....`..........\n"); Sleep(200);
-    printf("---`  ```````.---.`./o. `````.......`````./smNmNmNNNNNMMMMNMMMNNMMMMNdhdNMNNmdhyso//::------------...........-...........``````````````.......................................---------------------::::------:::::::/+shmNNMNMMNNNNdhs///-.............---\n"); Sleep(200);
-    printf(":-.   ```````----``-/s.````....-----..```./ymmmNNNNNNNMMMMMMNNNMMMMMMMNNMNNmhyso+/:::------------........------:----............................................................------------------:::::--::---::::::++shNMMMMMNNMNmmmds++/-..--.....------\n"); Sleep(200);
-    printf("--`   ```````.--.``:/y``````...---::--..../hdmNNNMNNNMMMMMMMMNMMMMMMMMMMNmdhso+//::------------......-.-:::::::/:::::------------.........----..--..............................--------------------:::::::--::::::/+osdNMMMMNMNNNNNmmhoo+-....-........--\n"); Sleep(200);
-    printf("--`   ```````.--.``//o`   ````.-----...``.+yhNNNMMMMNMMMMMNMNNMMMMMMMMMNdhys+//::---------...-..-.----::://////////++///++++//::::---------------------.--......................--...----------------::::::::::::::/+oydNNMMMMMMMNNNNdhyso/-...--.........\n"); Sleep(200);
-    printf("--`   ````````--.`.//o     ````......`````-/hNMNNNMMMMMMMMMMMMMMMMMMMMNdhs+/::-------........-...---::/+++/++++oooosssyyhhhhyyyso+/:::-----::::------------------..--.-.---......----.----------------:::::::::::::/+sydNMMMMMMMMNNNNmhhhso:..............\n"); Sleep(200);
-    printf("--.    ```````.-.`.//o     ````.....`````.:omNMNmNNMMNMMMMMNMMMMMMMMMMmho/::-----............------:://+++ooooosyyyhhddddmmmmmmmdyso+///::::::::::::--------------------------------------------------:--::::::::://+shmNMMMMMMMMMNNNmhhhso/-.........`..`\n"); Sleep(200);
-    printf("--.`   ```````.--`.//o     ````.....```.:/oymNNmdhmMMMMMMMMMMMMMMMMMMNds+::---...........--..---::::/++++///++osssossshhhddddmmmmmdhsso+o/++//::/::::::::::-----------------------------------------------:::::::::/osdNNMMMMMMMMMNNNmdddys+-..`........``\n"); Sleep(200);
-    printf("---.    ``````.--.`:/o     ````.....``.:+oosdNmysshNMMMMMMMMMMMMMNmmddhs+/:--..............----::://////////////++++++oossyyhhhdddddhyyssoo++//////:/::::::::::::::::::::-:-::-:---------------------:-----:::::::/+oydNMMMMMMMMMMNNNmmddhyo:.......`.````\n"); Sleep(200);
-    printf("----`   ``````.--.`-/o`     ```....``.-/+oooyhys++smMMMNNMMMMMMMMNmdhyssooo++/:--.......-----:::::///:::///:::::/::::///++oossyyyhhdhhyhysso+o+++////////:::::::::::::::::::::::::::::::-------------------:-::::/+osydNMMMMMMMMMMMNNmmddyoo/-``.`..``````\n"); Sleep(200);
-    printf("-----`   ``````---`./o.     ```....`.-/+++++ooo++++yNNNNNNMMMMMMNmmNhyssssossssoo+++/:/+++/:::::-::::///////::::::::://////++oossyyhhhhyyysssooooo+//::--:::://////////////::://////////:/:::::::::::------:::::://+ohmNMMMMMMMMMMMNNNmdhs/o:-...``.``````\n"); Sleep(200);
-    printf("-:---.   ``````.--../+-     ````..``.:/+/////://+ooosmNNNNNMMMMNmmmo/:/+oosssssssyhhsoyNNNNNNNmmdddhyysooo++///:::::://///++++oooossyyyyyyyyyyssso++//:::::://///+/+++++++++ooososssoooooo+++++++//++/::::::::::://+oymNMMMMMMMMMMMNNNmdds/::-.```````````\n"); Sleep(200);
-    printf("-----.    ``````---`://     ````.``.-///:::::-://+oo+ymmmNNMMMNNmh+--..--:+osssshmmsoomNNMMMMds++/++oossyyhhhddddhhysso+++++++ooooossssssyyyyyyssso++/////////++oooooooosssyyhhdhddmddddhhyysyssssosso//::::::::://+oymNMMMMMMMMMNNNNNmmdy/--..```````````\n"); Sleep(200);
-    printf("-----`    ``````---`:/+    ```````..:::::::---://+oo++hmmNNNNNNmy+/--...--://++osdhoohNNMMMNy:::::://+++++++++++++osyhddmddhyssssssosssssssyyyyyyso++/////++++oossyssyysyyyhhdmmmmNmNNNNNmmmddhyyyyssoo+::::::::::/+oymNMMMMMMMMMNNNmmmmdy/....```````````\n"); Sleep(200);
-    printf("-----`     `````---.-/o`   ```````.--:-------::/+++++/shdmNmmNmho+:--....--::////+++omNMMMMh///++++osyhhdmmmmmNNmmmddhyysyyhddmmmdhyyssssssssyyysoo+++//+++++oossyyyyyyyyyhddddmmdmmmmmmddddmmmddysyyyss+::::::::://oymNMMMMMMMMNNNNmmmdds:.``````````````\n"); Sleep(200);
-    printf("-----`     `````.--../+-   ``````...---------:///++++/+ydNmmmmdyo/----.....--:::::--:ohNMMN+-://osyhdddddddmmmNNNNNMMMNmhhhhyyyyyhddmmmhyyssssssoo++++//+++oosssyyyyyyyyyyhyyyhhyhhyyyssssssyyhdddhyyyyyo+/::::::::/oymNMMMMMMMNNNNNmmmdhs-```````````````\n"); Sleep(200);
-    printf("----.`     `````.--.`:/+   ````.........----://+++oooo+syddmddhs+/:---.......--------.-:hMd:.----:/++++////+osyhdmNNMNmyssydmddhhyyyyyhhddmdysoo++/////+++++osssyyysssyssyyyyyyysssooooooosssyyyyhhhhhyyso+/:::::::/oymMMMMMMMMNNNNNNmmh+:.`  ````````````\n"); Sleep(200);
-    printf(":----`     `````.--.`-/o.  ```............--:/++oosssysooyddhhyo/::--.........--------..:mo-..----::://:::::::///+ssyhyyyyhdmmNNdhhyyyyyyssydmho///:::///++oosssssssssyyyyyyyyyssoooo+o++ooossssssssyhhyyso/:::::::/+ymMMMMMNNMMNNNNNmds-````      ```````\n"); Sleep(200);
-    printf("/:---`      ````.---``://  ````...........--/+ooossyyhho+syhdys+/::--.........-----------s/-..-.----::/++++++////++oooossssyhdmNNdhhyyyyso+++sNNds/::::://+++oosssyssyssyssssssooooooo+++++oooooosssoossos++/::::-::+yNMMMMMMMNNNNNNmds/-`           `````\n"); Sleep(200);
-    printf("//---.`     `````.--.`./+- ````..-.......---/+ossyyyhhys+osyhyso//:---........---::::::-:y:----------:/+ossyyyyssssssssssyyyyyyyhhyhyyso+/////hMMMNmdddhyyssyssyhhdhhyyyyhhhyhhhhdhhhhyysssooooooooooooooo++/:::---:/yNMMMMMMNNNNNNNmh/.``            ````\n"); Sleep(200);
-    printf("//:---`      `````.--.`-/+.````..-........--:+ossyyyyyys+++ssso+::----.......--:::::::--/s------------:://+ooosyyhyhhhhhhhhhhyyssssss+///::://hMNhsosyhdmNMMMNNNNmhhhhdhddhhhhhyyyyyyyyhhddddddddhyysooooo+//:::---:/hNMMMMMMNNNNNNNmo.`                ``\n"); Sleep(200);
-    printf("//:----`      `````.--.`:/+````...........--/+osssssssoo+/:+o++/::---........-----------/o---.........-----:::://+oooossssssssssoo++//:::::/+sNd/-....--:+sdNMMNhyyyhhdddmNNNNNNNNmdhysooo++ossyyhhdmmmmddys+//:---:+mNMMMMMMNNNNNNNh:``               ```\n"); Sleep(200);
-    printf("//:----.`      `````.--..:/+.``...........-:/+osso+/////::://+///:---.........---.-.....-o.....```````........-----:-:::://///////:::::--/yhymd+:-.`..---:+shMMhssyhhhmNNNNNMMMMMMNdyysyddhhsoo+++++++ossydmmmdhs+//sNNMMMMNmNNNNNNd+.                 ```\n"); Sleep(200);
-    printf("//:-----.`      `````---::+s+```..........--:+ooo+/:://:-/:://::::---....................+:..````````````.........----------------------+mNhdd+/-.``.----:+oyNNysssyyhdddhyyyhhdmmmhyyyhdmNNNNdyo++++///////+oydNMNmmmyyNMNNmNNNNmd/``                 ```\n"); Sleep(200);
-    printf("//:-----`        `````/o/-...```.`......-..--:/++++/++++::://:-------...................../:.`````````````.............-----------------/yyyso/-.```..---:/sdMNsoossyyyyhhhhyyssssssyyyyyhhhdmNmdyo++++++++++oyysmMMMNmsmNmmNNmmmd+.`                `````\n"); Sleep(200);
-    printf("///----.```       ``.:/`   ````````......---..-:////++++/:::/:------.....................``-::-.`````````````.`........----------------::/sooo:-.```...--:/smMNys++oooosyhhhhhyyysssoo+++ooooydmmddyssoooo++ooydohMMMMdohyhdddddo/.`                ``````\n"); Sleep(200);
-    printf("+/////++:-:-:-..--:--.      ````````...........`...-////:-:::::---.......................`.```.---.`````````...........----------------:+o+o+:--..`...--::/oymm+++++////++osyhhhyyyyyssoo+++oossyyyyyssoo+////+sodMMMNs+oosyyyhs-``                   ````\n"); Sleep(200);
-    printf(".----.`      `...`          ````````...```````````..-://:::::---....................................---...............------::::::----:++++/:--..```.---//+sssd+/////::::///++ossyyhhhyhyssooooooooooo++//::::/o+NMMMm+/+oosyss/`                       ``\n"); Sleep(200);
-    printf("                            `````````...``````````...-::::::----................................-----.----::::--------------:::::::::/+/+/:--..`````..-:/++so+h++//::/::::::::////++ooosssssso++o++++///::----++yMNNNh++ooosoo+-`                         \n"); Sleep(200);
-    printf("                            ``````````................-.-:::---..................-----...---.-----::::::::::::::://+//+++++++++/+////////--...``````...-:/+os+ys///::::::::::::::::::::///+++++///+////::-----++mh+omdyo+++ooo+.                          \n"); Sleep(200);
-    printf("                             ``````````.-.........--....--::---........----.---..-.-----------------:::::////+++/+////+++ooooo+//:::///--....```` ```..--:+osooh++///::::--------:-:-::::::://///////::::---.:/o/::ommyooooooo:`                          \n"); Sleep(200);
-    printf("                             ```````   `...........`...-------........--------------------------::::::::///////+++ooooossyyyyyso+:::::-.....````````....--/ossosh+///:::::::----------------:::::::::::::----:+/--/hNmdso+ooo+-                           \n"); Sleep(200);
-    printf("                                `       `.-...........-:-----........-----------------:-::--:::::::::::://////++ooossyyyyhhyo+::-...-...```````````......--/osoooyso//:::::::::::::--:-----------:::-::------+/--:ommmdso+ooo/.                           \n"); Sleep(200);
-    printf("                                         `.--......--::/:---.......------::::::::::::::::::///::::::///////+++oosssyyyyyys+:-...````...````````````......---+sso++/+oso+/::::::::::::::::----------------:--/+---/ymmddso+ooo/`                           \n"); Sleep(200);
-    printf("```                                        `.--::::://+/---........----:::::::::::::///////////////////++++ooosssyhhhyyyy+-...``````````````````...........--ossssoo++/+oooo++/:::::::----:----------------/+::-:+hdhyhyoooo+:`                           \n"); Sleep(200);
-    printf("...````                                      `.-::///++/---........-----:::::://////////////////++++++++ooosssyyhhhhyssso:-.......``````..........---------../syhhyysoo++////+o+o++++//:::--------........:::::-:sdysyhsoooo+.                            \n"); Sleep(200);
-    printf("/::--..`````                                     `.oydy---........-----:::::////////++++/+/+++++++o++oooossyhhddhhhysoooo/::--------.......--.------------------:+syyyso++///:::::::://+++++//////:::--:::--::::+dhysysooooo:`                            \n"); Sleep(200);
-    printf("o+++/:--..``````                                  `+mNo...........-----::::::///++++++++/+++++++ooooossssyhhddhhyysoo++++oo+++++////:::::::---:::::::::::-----.....:oyssooo+++/////:::::::::::---------------:-:ohhsssooooo/.                             \n"); Sleep(200);
-    printf("ssoo++//:--..``````                                -hm+.........--------::::://+++++++++++oooooosoossyyyhdhhhhyysoo+/////+syyyyyydddys++++//::///////::::/:::--.....-+yyyssoooo++++++/////::::::--------------::ssyssoooo+/.                              \n"); Sleep(200);
-    printf("sssoooo++/::--..`````                              `-+-........----------:::////++++/++++ooooosssssyhhhhhhhyyyso++///::::/oyyhddhdddddhyoo++++++++++++///+///:-------:shhysooo++++///////////:::::::--:-----:::+syyoooooo/.                               \n"); Sleep(200);
-    printf("yysssssooo+/::---..````                               `...-...----------::::://///////+++oooosssyyhhhhhhhhyyso+//:::::--:/+osyhhdddddddhhyooooo+oo++++++++++/////::::+syhdyssooo+//////////////::::::::::::::::shyo++oo+/.                                \n"); Sleep(200);
-    printf("hyyyysyyyssso+/::--..```                              `..------------::::::::://///////++ooosssyyhhhhhyyhyss+//:::---...-::/+ssyhhhdddddddhoooooooo++ooosyyhyysoo+//oyyhhddhssoo++///////////////::/::::::-:::+yyo/+oo+:`                                 \n"); Sleep(200);
-    printf("dhhhhhyyyyyyyss++/::-..```                   ````    `..---------------::::://////:///+++ooosssyhhyyyyyysso+//:::--..-.---::/++syhhhddddmmmdhhhysssyyhdddddhhhhysosssyyyhhddhsso++++++++/////////////:::::::::oso+++++-`                                  \n"); Sleep(200);
-    printf("mmmmdddhhhhhyyyso/--::-.```                  ````    `..----------::--::::::///::::////++ooooosyhhyyyyyyso++///:------------://+ossyhhdhdddhdddmdddddddddhhhyyyyssssssyyyhhddhssoo+++++++//////////////:::::::osooo+/-`                                   \n"); Sleep(200);
-    printf("NNNNNmmdmddhhyyys/:-:::-.``                   `    ```.----------::::-:::::::/::::::///+++++++syhysssyysso+////:::--------::::://++oyyyhhddddddddddddhhhhhhhyyyssssssssssyyhhhyssoooo++++++++////////:::/::::+oso++:.`                                    \n"); Sleep(200);
-    printf("NNNNNNNmmmmdhhhyyo/:--::-.``                      ```...---------::::::::::::::/:::://///////+ossoossysssoooo+o+++++++/////+++++++oooosssyyhhhddddddhhhyyhyyyyyyssssssooossyhhhysssso+++o++++++///////////:::+oo+/-`        ``      ``````                \n"); Sleep(200);
-    printf("MMMMMNNNNNmmdhhhhs/----...``                ```..--....---------:::::::::::::::::::::/://////++ooo+ossyysyyyyhhyyhyyyysssssssssssssssssssysssyyyyyhyyyyyyyysssssssssoooooossyhhhysssooo++++++++///////////::/+++-.`     ```````  ` ```````                \n"); Sleep(200);
-    printf("MMMMMMMNNNmmmddddy+/----.``               ``.--:/+/-...------:::::::::::::::::::::::::::://///+++ooosyhhhdmNNNNNmmdddhyhhyyyyyyyyysyyyyyyyyysyyyyyyyyyyyyssssoooooooo+ooooossyyhyysssoooooo++++/++////////::/+:.`      ``````````` ```````                \n"); Sleep(200);
-    printf("NNMMMMMMNNNNmmmmmdy/---:--..``            `.:/+oso/-...----:::::::::::::::::::::::::::::::://///++oosyyhmNMMMMNNmhhddyosyhhhhyyyyhyhyyyyyyyyyyyyyhyyyyyyysssooo+oo+o+++oooooosyyhyyysoooooo++++//////////::::.`      `````````````` `````                 \n"); Sleep(200);
-    printf("hdmNNMMMMMNNNNNNNmds+:-::::::--..`        `.+ssyys:-...----:::::::::::::::::::::::::::::::::////++oosooshNMMMMNNdssyhs//+syo+/+oyhhhyyyhhyyyyyyyyyyyyyyyyyyssoooo++++++++ooosssyyyyssooooo+oo+++//////////:.`        ``````````  ```````                  \n"); Sleep(200);
-    printf("+syhdmNNNNMMNNNNNNNmyo/-::::://:-`         `:yhhyo:--------::::::::::///:::::::::::::::::::::///+++++++/+oydNMNNdssss/::///:::::+yysossyhhyyyyyyyyyyyyyyyyyyssssooo+++++++oosssyyysssooo+++++o+++///+////:-`            ````````    ``                    \n"); Sleep(200);
-    printf("`.:osyhmNNNMMMNNNNNNmho:--::::::`           `/yys/:---------::::::::::///::::::::::::::::::://///++//:::///+oymNmyyhs::::/------:o+///+oyso+++osyhyssyyyyyhyyyyysssoo+++oooosssyyssosooo++++oo+++////////:.                                               \n"); Sleep(200);
-    printf(" `./++oyhmNNMNNNNNNNNmh+:-::::-`            `.+so/:----------:::::::://////:::::::::::::::::////////:::::::///+oyhddy//+oo:-----:///////o+/::::/ss+//+sysshhhddddhyssoooooosssyysooooooo++++o+++++//////:-`                                               \n"); Sleep(200);
-    printf(" .-:://+oydmNNNNNNNNNmho/::::-`              `.+o+/---------::::::::////////:://::::::://::///////::::----:::::/://++/os+///o++oo///////+:::::::++/::/oo++ssdNMMMNNdhyyyssssssysso+++++++++++++/////////:`                                                \n"); Sleep(200);
-    printf("`---:::/+oyhmNNNNNNNNmds+:::.`                `-oo/:---------::::::::////////://::/:/:/:::://////::::--------:::://::://///+o++///+++osyho++//:/+////++++syhNMMMMMMMNdhhyysosssoo+++++++++++++++/+/////:.                                                 \n"); Sleep(200);
-    printf(".-----::/+oyhmNNNNNNmdho/-.`                  ``/s+::--------:::::::://///////:/:://///::/:::///::::-----------:://///::---::::///++++sssyyssoosyoo++soshdmNMMMMMMMMNmhhhysooooo+++++++++++++////+////:-`                                                 \n"); Sleep(200);
-    printf("------:::/+oydNNNNNNmho-.```                   `.o+:-:-:::--::::::::://////////////////::::::::/::--------------:::////::::-----:://++oooooossyyyysoosydmNMMMMMNNNmmdhyyyysooo+++++++++++++/+/////////-`                                                  \n"); Sleep(200);
-    printf("::::::::://+shmNNNmdo:...``                     `-o/::::::::::::::::::////++//////////::/:::::::::--------------:::////////////://////++++++oosssssyyyhdddmdddddhhyyssssssoo+++/////++//++//+/+/////:.                                                    \n"); Sleep(200);
-    printf("//::::::::/++sdmdy+-``.`````                     `:+:::::::::::::::::::///++++/////////::::::::-:::-----------::::::/://++++++++++++++++++++++++oo+o++ooossssyysssooo+oossoo+++//+/+///////////////:.                                                     \n"); Sleep(200);
-    printf("/////::::::/+oo+-.```````````                     `:/:::::::/::::::::::////++/++/++/////::::::::-::-----------:::::////+oo++++++oooooooo+ooo++o++o+++o++ooooooooo++++++oooo++////+//+/////////////:`                                                      \n"); Sleep(200);
-    printf("::::::::::://-.``````  ``````                      `:/::///////::::::::::://+++++++//////:/:///::-::------------::::///++oooooooo+ooooooosoossssoooooooooooo+++++++++/+++++++///////////////////:-`                                                       \n"); Sleep(200);
-    printf("-::::::::::-.```````   ```````                      `:/::////////////:::::///+++++++++//////::::------:-----------:::://+++osssssssssssoooooososssssooo+++++/+//+++//++++++++/////++///////////:.                                                         \n"); Sleep(200);
-    printf("::::::----.````````     ```````                     `.//:/++++++////////:::://+++++++++/+///::::-----:----------------::://+ooossyyyysyysssssssssoooo++++///+////++//++++++++///+/+/+/////////:`                                                          \n"); Sleep(200);
-    printf("::--...---`````````     ````````                     `./+//+++++++////////:::///++++++++++///::::----------...........----::://++++oossssysysssssssoooo++++/+///++///++++++///+++++++///////:.`                                                           \n"); Sleep(200);
-    printf("--::/:///:.````.```      ```````                      `.++//++++++++++//+///::///++o+++++++///:::---------..................----:::://////++++ooooo++++++++++////++/++++/////+++++++//+///:-`                                                             \n"); Sleep(200);
-    printf("///++oyhh+.````````       ```````                      `.++///+oo++++++++++////////+++++++++////:::-----.......................---:-::-:::://///////+////+/+///+///+++////++++++++/+/////:.                                                               \n"); Sleep(200);
-    printf("syhhhysso:.````````        ```````                      `./o++//oooooo++++++++//////++++++++++////::-------.................-------------::::::://///////////++//////////+++++++/++////:.`                                                                \n"); Sleep(200);
-    printf("hyooooooo-`````````         ```````                      `./o+///+oooooooo+++++++////++++++++++/////:::-----------...-.....------::--:::::::::::::///://////////////////+++++++/+++///-.``                                                                \n"); Sleep(200);
-    printf("+o+ooooo+:.````````         ```````                       `.:o++//+ooooooooooo+++++///+++++oo++++++////:::::::------:------------:::::::::::::::::::::://///++/////////++++++++++/+/-.````                                                                \n"); Sleep(200);
-    printf("o+ooooooo:.`````````         ```````                       ``:o++/+/+ooooooooooooooo++//+++++++++++/++////////:::::::/:::::::::::::::::///:::://:::::::://////://////++++++++/+//:....````                                                                \n"); Sleep(200);
-    printf("o+oooosos/.`````````-`        ```````                       ``-+o+++++ooooososooooooooo++/++++++o+++++o++++++++///////////////////////////////////////////:::://///++++++++++/:.```...````                                                                \n"); Sleep(200);
-    printf("oosssssss/.```.`````/+`        ```````                 `     ``./ooo++++ossssssssooooooooo++/+++o+o++o+oooooooo++++o++++//+++++++//++////////++//////////////////+++++++++/-.``````......`                                                                \n"); Sleep(200);
-    printf("osssssssso-```...```-m+`        ```````                   `  ````:ooooo++ossssssssossssssoooo+++++ooo+oooossossssoooosoo++++ooo+++++++++++++++++++/++++++///////+++++++/:.`   ``````.....`                  ```                                           \n"); Sleep(200);
-    printf("ssssssssys:.```..```.yNs-        ``````                  ```   ```-+ssoooooosyssssssssssssssssoo+++oooooooossssssssssssssosoooooosoooooooooooooo+o++++++++++//++++o++::-.``   ``````.....``                ``.````                                        \n"); Sleep(200);
-    printf("ssssssssyy/.````````./NNd/`      ```````                   ````````.:osssooooosssssssssssssssssssoo+ooooosssossssssssssosssssssossssssooosoooooooooooooo+++++++++//::---.``     `````.....`               `.-..``````                                     \n"); Sleep(200);
-    printf("syyysysyys+-`````````.dNNms-`     ```````                ````````````-+sssosooosssysssssssssssssssssssoooooosssssssssyssssssssssssssssosssssooosoooooooo+++//:--:::::---..``    `````.....``             `.-.````...`                                     \n"); Sleep(200);
-    printf("syysyyyyyys:.`.``````.oNNNNh+.     ```````                ````````````.:ossssssssssyyssssssssssssssssssyssosssssssssssyssyyysssssysysssyyssssssssssoo+o+/:.`   `:::::----..``   ``````....``            `.-..````--.``                                    \n"); Sleep(200);
-    printf("syyyyyhhhyy/.`````..`.:mNNNNmy:`    ```````                 ````````````-/ssssssssssssyssssssssssssssssssssssssssssssssssssssssssyssyysssssssssssoo++//:-.`    `::::::----..```  `````..--.`            `--..```.::-.``                                   \n"); Sleep(200);
-    printf("syyyyhhhhyys:.`.`...`..hNNmmmNms:`   ```.```                 ````````````.:oyysysyysssyyyyysssssssssssssssssssssssssssssssssssssssssssssossooooo++/////::-.`   `::::::-----..``   `````.--.``          `.--.....-//:-.`                                   \n"); Sleep(200);
-    printf("yyyhhhhyhhhy/..........+mNmmdmNNmo-` ```..``                 ``````````````./syyyysyyyyyyyyyyysssssssssssssssssssssssssssssssossssossooooooo++++//:/++//:--.`   -::::::----..``   `````.---.`         `.----....://-.``                                   \n"); Sleep(200);
-    printf("yyhyyhhhhyhho-......`..-dmmmmmmNMNd+.` ```..`                 ``````````````.-+yyyyyyyyyyyyyyyyssssssssssssssssssssosossssssssosoooooooo++++++//::/+o+//:--.`   ./:::::----..``    ````..--.``        `----....-:/-.`                                     \n"); Sleep(200);
-    printf("yhhhhhdhdhhdy/..`..``...omNNmddmNMMNy/.` ``.``                  ``````````````.:syhyyyyyyyyyysyysssssssssosssssssssooosoooooooooooooooo+++++////:/oso++/::-..`  `::::::----..``    ````..--..`       `.----....-:-.`                                      \n"); Sleep(200);
-    printf("yyhhhhhhdhhhyo-.........:dmNNmmdmNMMMms-`` ````                 ```````````````.-+yyyyyyysyysssyysssssssssssssossssssooooooooooooooo+++++//////:/syso++/::--.``  ./:::::----..`     ````..--.``      `-----...-::.`                                       \n"); Sleep(200);
-    printf("yhhhhhhhhhddhy/..........ymNNNmdmNNMMMNd+-``````                  ```````````````.-oyyyyyyyyyyyssssssssssssssooosoossooooooooooo++++++++////////shyso+//::--..`   ::::::::--..``    ````...--.``     .----....-:-.`                                       \n"); Sleep(200);
-    printf("hhhhdhhhhddhhho-.........+mmNNmmdmNNMMMMNy/-````                   ````````````````./syhyhyyyysyyyyssssssssssssossssooooooooooooo+++++++//////+sdhyso+//::--..``  `::::::::--..``  ``````..---..``  `.----...-::-``                                       \n"); Sleep(200);
-    printf("yhhhhdddhdddddy/.........-ymmNmmmmmNNMMMMMmo:.``                     ```````````````.-+yyyyyyyyyyssssysssssssssoossoooooooooooooo++++////////+smmhyso+///:---..`   .::::::::--..``  ``````..---...```----....-::.`                                        \n"); Sleep(200);
-    printf("yhhhhhddhhhhhdho-.........+dmNNmmmmmNMMMMMMNh+-.`                     ````````````````.-oyyyyyyyyssssyssssssssoooosooooooo+++++++++++/+++++/+sNNmhys++//::---..``   `-:://:::--..``  ``````..--..```.----....-:-.`                                        \n"); Sleep(200);
-    printf("hdhhhddddhdhdddy/.........-hdmNNmmmmmNMMMMMMMms:-.`                   `````````````````..:syyyyyyyyyyyysssssssssooooooooooo++++++++//+++++/+smMMmhso+//:::---..``    `.-::/::---..``````````..``   `.:--.....-:-``                                        \n"); Sleep(200);
-    printf("hhdhddddddddddddo-.........+dmNNNmmmmNNNMMMMMMNd+:.`                   ``````````````````.-/syyyysyyyyysyysssssosooooooooo+o+++++++++++++++odMMMmhso+//:::---...``  `  `.-::::--..````````````     `----....-::-``                                        \n"); Sleep(200);
-    printf("dddddhddddddmdddy/.........-hdmNNmmmmmNNNMMMMMMMNs:-.                 ````````````````````..-+syyyyyysssyssysssssssoooooo++++++++++++++++osdMMMMmyo+//::::---...`` ```   `.-----..`````````        `---.....-::-``                                        \n"); Sleep(200);
-    printf("hhdddddddddddddddo-.........+dmmNNNmmmmNNNMMMMMMMNd+-.`               ` ````````````````````..-+syyyyyyysssssssssssoooo++++++++++++++++ooymMMMMMdso+//:::---....````````  `-/::--.`                .---.....-/:-`                                         \n"); Sleep(200);
-    printf("ddddddddmdddddhddy/.........-ddmNNNmmmmmNNNMMMMMMMMmy/.`                `````````````````````...-/syyyyyyysssssssssooo++++++++o+++++oooshmMMMMMNho+///:::---....`````````` ``:oo+/-.`             `.---....-:/:.`                                         \n"); Sleep(200);
-    printf("ddddddddddddmdddddo-.........+mmmNNNNNNmmmNNMMMMMMMMMd+-`               ```````````````````````...-+syyyyyyyssssssssoooooooo+oooooooooydNMMMMMMNso+///::---....``````..```````/syso+/-``          `----....-:/:.`                                         \n"); Sleep(200);
-    printf("ddddddddddddddddddy/.........-hmmmNNNNNmmmNNNMMMMMMMMMNy/.``          ` ``````````````````````.``..../osyysyssssssoooooooooooooooossshmNMMMMMMmdy+///:::--......`````...```````-shyyso+/-``       `---.....-:/-.`                                         \n"); Sleep(200);
-    printf("dddddmdddddddddddddo-.........+mmmNNNNNNNNNNNNNMMMMMMMMMms:.```     ``````````````````````````````.....-:://///////+ooooooooooosssyhdNMMMMMMms/::::/:::--........`````...```````-yhhyysso/:.`     .--......-:/-.`                                         \n"); Sleep(200);
-    printf("ddddddmddddddddddhdy/.........-dmmmNNNNNNNNNNNNNMMMMMMMMMNmo-...`   `     ````````````````````....----..............-sssssosssssyhdmMMMMMMNh+/::---:----.........``````....``````.+hdhhyssso/-.` `.--......-/:-``                                         \n"); Sleep(200);
-    printf("mmdddddddddddhdhhdddo-.........+mmdmNNNNNNNNNNNNMMMMMMMMMMMMds/:.`    `   ``````````````..----:------...............-sssssssysyhhmNMMMMMMNy/::-----........----...``` ``...````````/hddhhhysso+:-..--......-//-``                                         \n"); Sleep(200);
-    printf("mmmddddddddddhhhhhhdy/-........-hmdmmNNNNNNNNNNNNMMMMMMMMMMMMMms:.`  `````````````.-:/syy++//::--------............./ysssssyyyhdNNMMMMMMms//::-----...`./syyyhhhs+:.`  ```...```````:ddddhhhyyss+/-...``...:/:.``                                         \n"); Sleep(200);
-    printf("mmmmmmmmdddddhhhhhdhdo:.........+mmmmNNNNNNNNNNNNNMMMMMMMMMMMMMMms/-.```...--/+oydmNMMMMm+//::-------:::::--........oysyyyyyhdmNMMMMMMMdo///::-----...``.oddhhhddhy/.`  ```...```````:dddddddhhyys+:-```..-:/:.`                                          \n"); Sleep(200);
-    printf("Nmmmmmmdmdmddddhhhdddd+-.........dmmmmNNNNNNNNNNNNNMMMMMMMMMMMMMMMMNNmmmmNNNMMMMMMMMMMMMN+:/::-----/ymNNNdo:-.......oyyyhhhdmNNMMMMMMNy///::-----......``.+hhyyyhhhy/.`````.......--:oddmdddddhhhyyo+:.`..-//-.`                                          \n"); Sleep(200);
-    printf("NNNNmmmmmmmddddhhhhhdds:-........ommmmNNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy:::::---/dMMMMMMNy-.......ohyyhddmNNMMMMNdss++:--.............-:ohyysssyhhhysoo++ossyyyhdddmmmmddddddhhhyyyo/-.-://-.``                                         \n"); Sleep(200);
-    printf("NNNNmmNNNmmmdddhdhhddddo-........-dmmmmNNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd:--:::::yMMMMMMMMh-.......+hhhdmmNNMMMNy+/::--....--:::/++syssmNNmhhyhyyhhddmmmmmmmmmmmmmmmmmmmdmmdddddddhhyyo/--:/-.``                                         \n"); Sleep(200);
-    printf("NNNNNNNmmNmmmddhddhddddh/---......oNmmmmmNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN+----:::sMMMMMMMNo......../dddmmNNMMMNy/::-....+ymNNNmmdmmdhssNMNNmmddddddmdmmmNNNmmmmmmmNNmmmmmmmmdddmddddhhhs+:-:-.``   ``````````````````````````````````````\n"); Sleep(200);
-    printf("NNNNNNNNNmmmmmdhhddmddmms:----....-mmmmdmNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy-----:::smNMNNdo.........:ddmmNNMMMNd/-.....-sNMMMMNmmmmddy+hMMMNNNNNNmmmmmmNNNmmmmmmmmmmNmmNNmmmmmmdmmmmddhhhs+:--..``````````````````````````````````````````\n"); Sleep(200);
-    printf("NNNNNNNNNNNmmdmdddmmmmmmd+----..-..yNNmmmNNNNNNNNNNNMNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd:-------::/++:-..........-hmmNNMMMMd+-......oNMMMMMmdddddyooNMMMNMNNNNNNmNNNNNNmmmmmmmmmmmNNmNmmmmmmmmmmmmmmddhho:...````````````````.`.````.``````..``......``\n"); Sleep(200);
-    printf("NNNNNNNNNNNmmdddmmmmmmmmmy/---.-:../NmmmmmmNNNNNNNNNNNNMMMMMMMNMMMMMMMMMMMMMMMMMMMMMMMMMMMNs----------..............-yNNNMMMMN+.```...:mMMMMMNdhdddyo+dMMMNNNMMMMMNNNNNNNNmmmmmmmmmNmNNNmmmmmmmmmmmmmmmmddhh+:..........................................--\n"); Sleep(200);
-    printf("NNNNNNNNNNNmmmmmmNmNmmmmmdo--:::-...dNmmmmmNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd:....------.............-oNNNNNMNh-.```...oMMMMMNdhhhhys+sNMMMNNMMMMMNNNNNNNNNmmmmmmmmNNNNNNNmmmmmmmmmmmmmmmmddhyo:..-:::::::-------::::::::::::::::::::/::::/\n"); Sleep(200);
-    printf("MNNNNNNNNNNNmmmmmNNNNNmmmmy:.-::-:..sNmmmmmmmNNNNNNNNNNNMMMMNMMNNNNMMMMMMMMMMMMMMMMMMMMMMMNNo-.....-----............-/NNNNNMNs.`````..hMMMMNdyyyyys++mMNNMNNMMMMMNNNNNNNmmmmmmmmmmmNNNmNNNmmmmmmmmmNmmmmddddhho:-:/++++++///:::/++ooo++++o+oo+o+oooooooo+o\n"); Sleep(200);
-    printf("NNNNNNNNNNmmmmmNNNNNNNmmmmmo--:---..:mNmmmmmmmmmNNNNNNNNNMMMMNMNNNNNNMNMMMMMMMMMMMMMMMMMMMMNd/.......---............-:mNNNNNd/.`````.:mMMMNdyyyysso/yNMMMMNNMMMNNNNNNNmNmmmmmmmmmNmNNNNmNmmmmmmmmmmmNmmmmdddddyo///oooooo+//////osoooooosssooosossssooosso\n"); Sleep(200);
-    printf("NNNNNNNNNmmmmmmNNNNNNmmmmmmh/-:::-...hNmNmmmmmmmmNNNNNNNNNMMMMNNMNNNNNNNNMMMMMMMMMMMMMMMMMMMNh/-.......-............-:dNNNNNs-.`````.+NMMMdsssssoo/+mMNMMMMNMMNMNNNNNNNNmmmmmmNNNNNNNNmmmmmmmmmmmmmmmmmmmmdhddhyo++/+oooo////::/oooooooooooooooooooooooooo\n"); Sleep(200);
-    printf("NMNNNNNNNmmmmNNNNNNNNmmmmmNm+--:-.-..+NNNNmmmmmmmmNNNNNNNNNMMMNMNNNNNNNNNNMMMMMMMMMMMMMMMMMMMNmo-........-..........--yNNNNd/.``````.yMMMmyoooooo+/hNMMNMMNNMMNNNNNNNmmmmmmmmNNNNNNNNmmmmmmmmmmmdmmmmNNmmmdhhmmhyoo//++++///:::/+oooo++ooooo+oo+o+o+++o+++\n"); Sleep(200);
-    printf("NNNNNNNNmmmmNNNNNMNNNNmmmmmmy:-:---..-mNNmmmmmmmmmmNNNNNNNNNNNNNMNNNNNNNNNNNNMMMMMMMMMMMMMMMMMNmo-.................---sNNNNs.``````.:NMMNyooooo++/+NNNMMMMMNNNNNNNNNNmmmmmmmmmNNNNNNmmmmmmmmmmmmmmmmmmNmmmdhhmmdyso/:/+++//:::::++++++++++++++o+++o+++o+++\n"); Sleep(200);
-    printf("MNNNNNNmmmNNNNNNMNNNNNmmmmNNd/-:::--..sNNmmmmmmmmmmNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMmy:................---/NNNm/.``````.yMMMhooo++++//dNMMMMMMMNNNNNNNNNmmmmdmmmmmNNNNNNmNmmmmmmmmmmmmmmNmmNmmmddmmmhyso:/+++//:::::++++++++++++++++++++++++++\n"); Sleep(200);
-    printf("MNNNNNmNmNNNNNMMNNNNNNNNNNNmmo-:::::-.:NNNmNmmmmmmmmmNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMMMMMNNh/.`........-....---:mNNs.``````.+NMMdo++++++//sNMMMMMMMMNNNNNNNmmmmmmmmmmmNNNNNNNmmmmmmmmmmmmmmmmmmmmNmmddmmmdhys+:+++/::::::++++++++++++++++++++++++++\n"); Sleep(200);
-    printf("NNNNNNmNNNNNNNMMNNNNNNmNNNmmmy/:++/--..hNNNNNmmmdmmmmmmmNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMMMNMNd/.``........------:dNd:```````-dMMmo+++++///+mMMMMMMMNMMNNNNNNmmmmmmmmmmNNNNNNNNNmmmmmmmmmmmdmmmmmmmmmmddmNmmdhyo:/+//:::--:/+++++++++++++++++++++++++\n"); Sleep(200);
-    printf("NNNNNmmmNNNNNMMNNNNNNNNmmmdmmds::os/:-.oNNNNmmmmmmmmmmmmNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMMMMMNd+.```...---------:yNs.``````.yMMmo/////////hMMMMMMMNMNNNNNNNmNmmmmmmmmNNNNNNNNmmmmmmmmmmmmmdmmmmNNNmmmddmNNmmdhs::///::---:/++++++//++/+//////+//++++\n"); Sleep(200);
-    printf("NNNNNNNNNNNNNMNNNNNNNmmmddddmmh/::://---NNNNNNNmmmmmmmmmmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMNNNd+.```..----------+d:``````.+NMms/////////oNMMMMMMMMNNNNNNNNNNNNmmmmNNNNNNNNNNmNmmmmmmmmmmmdmmmmNmmmmmddmNNmmdds:-//:::----:///////////////://///////\n"); Sleep(200);
-    printf("NNNNNNNNNNNMNNNNNNNmmmmdddmmmmms::s+/--.hNNNNNNNNNNNNNNNmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMMNd/.```..---------/o.``````:dMNy//////////mMMMMMMMNMNNNNNNNNNNNNNNNNNNNNNNNNNNNmmmmmmmmmmmmmmmmmNmmmmmddNNmmmdds-.--.................................\n"); Sleep(200);
-    printf("NNNNNNNNNNMMNNNNNNmmmmddddmmmmNd+:///:--oNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMNd/.```..--------:-``````.oNNh+/////////yMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNmmmNmmmmmmmmmmmmmmmNNmmmmddNNmmmdd+.`````` ``````````````````````````` `\n"); Sleep(200);
-    printf("NNNNNNNNNNNNNNNNmmmdddddddmmmNNNs::oo/--:mNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMMMNh:```...------:-.`````..sMd+/////////oNMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmmmmmmmmmmmmmmmmmmmmmmddNNmmmdh:`                                    \n"); Sleep(200);
-    printf("NNNNNNNNNNNNNNmmmmmmddmddmmmNNNNm+:+++:--hMNNNNNNMNNMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMNy-````..-----:-``````..ymo//////////dMMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNmmmmmNNmNmmmmmmmmmmmmmdddNNmmmdy.`                                    \n"); Sleep(200);
-    printf("NNNNNMNNNNNNNmmmmmdddddddmmNNNNNNy:/yo/--oMNNNNMMNNNNMNNNNNNNNNNNNNNNNmNNNNNNNNNNNNNNNNNNNNNNNMMMMMMMMMMMNo.```...-----.````...-oy/////////:yMMMMMMMNNMNNNMNNNMMNNNNNNNNNNNNNNNmNNmmmmNmNNmmmmmmmmmmmmNmmdmdmNNmmmdo.                                     \n"); Sleep(200);
-    printf("NNNNNNNNNNNNNmmmddddddddmmNNNNNNNmo:/::--/NNMNNNNMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMNMd:````..--::-`````...-/////:////:oNMMMMMMMMNNNNMNNNMMNNMMNNNNNNNNNNNNNmmmmmmmNNNNmmmmmmmmmmmmmmmddmNNmmmmo`                                     \n"); Sleep(200);
-    printf("NMNNNNNNNNmmmmddddddddmmNNNNMMMNNNh/::::--NMMMNNNNNNNNNNNNNNNNNmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMNy.````..-::.````...--:/::/::////mMMMMMMMNNNNNNNNNNMMMMMNNNNNNNNNmmmmmmmdmmmmmNNNNNmmmmmmmmmmmmmddmNNmmdd+`                                     \n"); Sleep(200);
-    printf("MNNNNNNNNmmmmddddddddmmNNMMMMMMNNNms:/:/:.hMMMNNNNNNNNNmmmmmmmmmNNNNmmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMNNNMNNm/`````..--````...--:/::::::::/hMMMMMMNNNNNNNNNNNMMMMMMMNNNNNNmmmmdmmmmdmmNNmmNNNmmmmmmmmmmNNmmddNNmmmdd+`                                     \n"); Sleep(200);
-    printf("NNNNNNNmmmdddddddddmmNNNMMMMMMNNNNNd++s/:-oMMNNNNNNmNmmmmdmmmmmmmNNNmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMNNMMMMNNNs.````....```..---:/:::::::::sNMMMMMMNNNNNNNNNMMMMMMMNMNNNNNNmmdddmdmmmmNNNNNNNNNmmmmmmmmmmmmmddmNmmddh+`                                     \n"); Sleep(200);
-    printf("NNNNNNmmmdddddhdddmNNNNMMMMMNNNNNNNNy//::-/NMNNNNmmmmmmmmmmmmmmmmNNNmNNNNNNNNNNNNNNNNNNNNNNMMNMNNNMMMMMMMNMNy.```....````.::::/:::::::::+NMMMMMMMNNNNNNNNMMMMMMMMMMNNNNNmmmdmddmmmmNNNNNNNNmNmmmmmmmmmmmmdhdNmmmmdh+`                                     \n"); Sleep(200);
-    printf("NNNNNmddddddddddmmmNNMMMMMMNNNNNNNNNmo///--mNNNmmmmmmmmmmmmNmmmNNNNNNNNNNNNNNNNNNNNNNNMNNNNNNNMMMMMMMMMMMMMMh-``.....````.o///:::::::::/mMMMMMMMNNNNNMNNNMMMMMMMMNNNNNNmmmmdmmmmmmNNNNNNNNNNNmmmmmmmNNmmmdddNNmmddyo.                                     \n"); Sleep(200);
-    printf("NNNNmddddddhddmmmNNNMMMMMMNNNNNNNNNMNh/o+-.yNmmmmmmmmmmNNmNNNNNNNNNNNMMNNNNMMMNMNNNNMMNMMMMMMMMMMMMMMMMMMMMMd-```...`````.hs/::::::::::dMMMMMMMNNNNNNNNMMMMMMMMMNNNNNNmmmmmmmmmNNNNNNNNNNNNNNNmmmmmNNNmmmdddmNmdddyo.                                     \n"); Sleep(200);
-    printf("NmmmdddhddddmmmNNNMMMMMMMNNNNNNNNNNNMmo/+:.+NmmmmmmmmNNNNNNNNNMNNMMMMMMMMMMMMMMMMMMMMMMMMMNMMMMMMMMMMMMMMMMMd-``.....````.hy::::::::::yMMMMMMMMNNNNNNNMMMMMMMMMNNNNNNNmNNNNNNNNNNNNNNNNNNNNNNNNmmmmmmmmmmdhdmNmmmdyo.                                     \n"); Sleep(200);
-    printf("mddddddmdmddmNNNNMMMMMMNNNNNNNNNNNNNNNh++:-:NNNNmmNNNNNNNMNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm:````````````+/-------::sNMMMMMMMNNNNNNMNMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmmmmmmNmmdddmNNmmmdyo.                                     \n"); Sleep(200);
-    printf("mddmmmmmmmmmNNNNMMMMMMNNNNNNNNNNNNNmNNms/:--mNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNMNN+````````````--:------:+NMMMMMMMMNNNNNMMMMMMMMMMMMNNNNNNNNNNNNNNNNNNNMNNNNNNNNNmNNNmmNmmNmmddhmNmmmmdho.                                     \n"); Sleep(200);
-}
-
 void outputfile(struct contact out[100],int *numuser){
     int i,j;
     FILE *userdata;
@@ -288,15 +94,6 @@ void showdata(struct contact muict[100],int *position){
     printf("\n");
 }
 
-void showinfo(struct contact info,char pwdconf[30],int pwdlen){
-    printf("ID: %7s             \n" ,info.id);
-    printf("Name: %s %s         \n" ,info.first,info.last);
-    printf("Phone Number: %s    \n" ,info.phone);
-    printf("Email: %s           \n" ,info.email);
-    printf("Password: ");
-    printf("\n");
-}
-
 int input_id(char id[8],char newu){
     int inpos = 0;
     char key_in;
@@ -318,16 +115,15 @@ int input_id(char id[8],char newu){
     }while(1);
 }
 
-int input_firstlast(struct contact newdata, char name[50],char FL){
+int input_firstlast(char name[50],char FL){
     int inpos = 0,iscap = 1,isnoncap = 1,noncap_pos = 99,i;
     char key_in;
     int setnull = 49;
     do{name[setnull] = '\0';}while(setnull--);
     do{
         system("cls");
-        
-        //printf("%s",name);
-        showdata(newdata,key_in,0);
+        FL == 'F' ? printf("Enter your First Name: ") : printf("Enter your Last Name: ");
+        printf("%s",name);
         key_in = getch();
         printf("\n");
         //printf("\t\t\t\tPOS:%d\tiscap:%d\tisnoncap:%d\tnoncap_pos:%d\n",inpos,iscap,isnoncap,noncap_pos);
@@ -426,6 +222,7 @@ int input_pwd(char pwd[30]){
     }while(1);
 
     do{
+        system("cls");
         printf("Confirm Password: ");
         printf("%s",pwdchk);
         key_in = getch();
@@ -484,15 +281,15 @@ int duplicatecheck(struct contact muict[100],struct contact newdata,int *numuser
 
 void Registeration(struct contact muict[100],int *numuser){
     struct contact newdata;
-    int step = 0,pwdlen=0,pwd2len=0;
+    int step = 0;
     do{
         switch(step){
-            case 0: step += input_id(newdata,newdata.id,'N');                       break;
-            case 1: step += input_firstlast(newdata,newdata.first,'F');         break;
-            case 2: step += input_firstlast(newdata,newdata.last,'L');          break;
-            case 3: step += input_phone(newdata,newdata.phone);                 break;
-            case 4: step += input_email(newdata,newdata.email);                 break;
-            case 5: step += input_pwd(newdata,newdata.pwd);                     break;
+            case 0: step += input_id(newdata.id,'N');                       break;
+            case 1: step += input_firstlast(newdata.first,'F');         break;
+            case 2: step += input_firstlast(newdata.last,'L');          break;
+            case 3: step += input_phone(newdata.phone);                 break;
+            case 4: step += input_email(newdata.email);                 break;
+            case 5: step += input_pwd(newdata.pwd);                     break;
             case 6: if(duplicatecheck(muict,newdata,numuser) == -1)         step += input_finalize(muict,newdata,numuser,numuser,'N');  
                     else {printf("Error Duplicated Data"); Redirecting(4);  step++;}
                     break;
@@ -515,7 +312,7 @@ void searchidphone(struct contact muict[100],char search[11],int *numuser, char 
     do{
         system("cls");
         results = 0;
-        mode == 'P' ? printf("Search Phone: ") :printf("Search ID: ");
+        mode == 'P' ? printf("Search Phone") :printf("Search ID: ");
         printf("%s\n",search);
         tableprint();
         for(i=0;i<*numuser;i++){
@@ -538,7 +335,7 @@ void searchnamemail(struct contact muict[100],char search[50], int *numuser, cha
     do{
         system("cls");
         results = 0;
-        mode == 'N' ? printf("Search Name: ") : printf("Search Email: ");
+        printf("Search ID: ");
         printf("%s\n",search);
         tableprint();
         for(i=0;i<*numuser;i++){
@@ -706,11 +503,11 @@ void admin_home(struct contact muict[100],int *numuser,int *userindex){
     }while(1);
     switch(admptr){
         case 1: edituserinfo(muict,numuser,'E');                            break;
-        case 2: listdata(muict,numuser);         while(getch() == 27);      break;
+        case 2: listdata(muict,numuser);                                    break;
         case 3: advancesearch(muict,numuser);                               break;
         case 4: edituserinfo(muict,numuser,'D');                            break;
         case 5: edituserinfo(muict,numuser,'G');                            break;
-        case 6: credit();                                                   break;
+        //case 6: credit();                                                   break;
     }
     if(admptr != 0) admin_home(muict,numuser,userindex);
 }
@@ -734,7 +531,7 @@ void user_home(struct contact muict[100],int *numuser,int *userindex){
     }while(1);
     switch(userptr){
         case 1: editinfo_home(muict,numuser,userindex);         break;
-        case 2: listdata(muict,numuser);   while(!kbhit());     break;
+        case 2: listdata(muict,numuser);                        break;
         case 3: advancesearch(muict,numuser);                   break;
     }
     if(userptr != 0) user_home(muict,numuser,userindex);
