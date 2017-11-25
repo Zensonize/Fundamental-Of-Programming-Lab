@@ -443,7 +443,7 @@ void editinfo_home(struct contact muict[100],int *numuser,int *userindex){
                     strcpy(me.pwd   ,   muict[*userindex].pwd);        step = editmeptr;                break;
             case 1: step += input_id(me.id,'N');                    if(step == 2) step = 8;             break;
             case 2: step += input_firstlast(me.first,'F');          if(step == 3) step = 8;             break;
-            case 3: step += input_firstlast(me.first,'L');          if(step == 4) step = 8;             break;
+            case 3: step += input_firstlast(me.last,'L');          if(step == 4) step = 8;             break;
             case 4: step += input_phone(me.phone);                  if(step == 5) step = 8;             break;
             case 5: step += input_email(me.email);                  if(step == 6) step = 8;             break;
             case 6: step += input_pwd(me.pwd);                      if(step == 7) step = 8;             break;
