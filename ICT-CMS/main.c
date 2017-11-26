@@ -13,7 +13,30 @@ struct contact{
     char email[50];
     char pwd[30];
 };
-
+void credit(){
+    system("cls");
+    printf("/* This project was created by */\n\n");                        Sleep(500);
+    printf("\tKrittamet Kiattikulwattana 	| 6088063   (Leader)\n");       Sleep(500);
+    printf("\tDujnapa Tanundet 		        | 6088105\n");                  Sleep(500);
+    printf("\tThanakorn Pasangthien         | 6088109\n");                  Sleep(500);
+    printf("\tSunat Praphanwong 		    | 6088130\n");                  Sleep(500);
+    printf("\tArada Puengmongkolchaikit	    | 6088133\n\n");                Sleep(500);
+    printf("<-| Getting Started |->\n\n");                                  Sleep(500);
+    printf("\t1. Extract File and pasted in C:/Zensonize\n");               Sleep(500);
+    printf("\t2. Run Zensonize.exe\n");                                     Sleep(500);
+    printf("\t3. Please use numpad to select and ESC to exit\n");           Sleep(500);
+    printf("\t4. Have fun and GIVE US A+\n\n");                             Sleep(500);
+    printf("<-| Further information |->\n\n");                              Sleep(500);
+    printf("\tGo to https://github.com/Zensonize/Fundamental-Of-Programming-Lab/tree/master/ICT-CMS\n\n");Sleep(500);
+    printf("<-| FEATURES |->\n\n");                                         Sleep(500);
+    printf("\t- Realtime Search\n");                                        Sleep(500);
+    printf("\t- Admin can give Admin Privilege\n");                         Sleep(500);
+    printf("\t- INPUT limitations to prevent ERROR\n\n");                   Sleep(500);
+    printf("<-| TO DO |->\n\n");                                            Sleep(500);
+    printf("\t- Sort Data\n");                                              Sleep(500);
+    printf("\t- Better UI\n");                                              Sleep(500);
+    getch();
+}
 void Header(char first[50],char last[50],int mode,char ADMIN,char loggedin){
     printf("============================================================================================================================\n");
     ADMIN == 'Y' ? printf("@ADMIN ICT-CMS | ") : printf("ICT-CMS | ");
@@ -224,7 +247,7 @@ int input_email(char email[50],char newu,char first[50],char last[50],char admin
             if(isconta && inpos <= a_pos){isconta = 0;a_pos = 99;}
             if(inpos <=0) inpos = 0;
         }
-        else if(isalnum(key_in) || key_in == '@' || key_in == '.'){
+        else if(key_in >= 33 && key_in <= 126 && inpos < 49){
             if(inpos < 50) {
                 if(key_in == '@'){isconta = 1; a_pos = inpos;}
                 if(isconta == 1 && key_in == '.'){
@@ -232,6 +255,13 @@ int input_email(char email[50],char newu,char first[50],char last[50],char admin
                 }
                 email[inpos++] = key_in;
             }
+        }
+        else if(key_in == '@'){
+            if(key_in == '@'){isconta = 1; a_pos = inpos;}
+                if(isconta == 1 && key_in == '.'){
+                    if(a_pos+1 != inpos) {iscontd = 1; d_pos = inpos;}
+                }
+                email[inpos++] = key_in;
         }
     }while(1);
 }
@@ -367,7 +397,7 @@ void searchidphone(struct contact muict[100],char search[11],int *numuser, char 
         system("cls");
         Header(first,last,3,admin,'Y');
         results = 0;
-        mode == 'P' ? printf("Search Phone") :printf("Search ID: ");
+        mode == 'P' ? printf("Search Phone: ") :printf("Search ID: ");
         printf("%s\n",search);
         tableprint();
         for(i=0;i<*numuser;i++){
@@ -391,7 +421,7 @@ void searchnamemail(struct contact muict[100],char search[50], int *numuser, cha
         system("cls");
         Header(first,last,3,admin,'Y');
         results = 0;
-        printf("Search ID: ");
+        mode == 'N' ? printf("Search Name: ") :printf("Search Email: ");
         printf("%s\n",search);
         tableprint();
         for(i=0;i<*numuser;i++){
@@ -402,7 +432,7 @@ void searchnamemail(struct contact muict[100],char search[50], int *numuser, cha
         key_in = getch();
         if(key_in == 13 || key_in == 27) break;
         if(key_in == 8){   search[--inpos] = '\0';  if(inpos <=0) inpos = 0;}
-        else if(isalpha(key_in) && inpos < 49)   search[inpos++] = key_in;
+        else if(key_in >= 33 && key_in <= 126 && inpos < 49)   search[inpos++] = key_in;
         else if(key_in == '@' || key_in == '.' && inpos < 49) search[inpos++] = key_in;
     }while(1);
 }
@@ -555,9 +585,7 @@ void admin_home(struct contact muict[100],int *numuser,int *userindex){
     char admptr_temp;
     do{
         system("cls");
-        printf("\t\t\t----------------------------------------\n");
-        printf("\t\t\t|WELCOME ADMIN %s %s|\n",muict[*userindex].first,muict[*userindex].last);
-        printf("\t\t\t----------------------------------------\n");
+        Header(muict[*userindex].first,muict[*userindex].last,5,'Y','Y');
         printf("\t\t");admptr == 1 ? printf("-->\t[1] Edit User's Contact\n")    : printf("\t [1] Edit User's Contact\n");
         printf("\t\t");admptr == 2 ? printf("-->\t[2] Show all contact\n")       : printf("\t [2] Show all contact\n");
         printf("\t\t");admptr == 3 ? printf("-->\t[3] Search for a contact\n")   : printf("\t [3] Search for a contact\n");
@@ -577,7 +605,7 @@ void admin_home(struct contact muict[100],int *numuser,int *userindex){
         case 3: advancesearch(muict,numuser,'Y',muict[*userindex].first,muict[*userindex].last);                               break;
         case 4: edituserinfo(muict,numuser,'D',userindex);                            break;
         case 5: edituserinfo(muict,numuser,'G',userindex);                            break;
-        //case 6: credit();                                                   break;
+        case 6: credit();                                                   break;
     }
     if(admptr != 0) admin_home(muict,numuser,userindex);
 }
