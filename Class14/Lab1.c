@@ -1,46 +1,59 @@
 #include <stdio.h>
 
+struct date{
+    int day;
+    int month;
+    int year;
+};
+
+struct name{
+    char first[50];
+    char last[50];
+};
+
+struct score{
+    int grade;
+    double credit;
+};
+
 struct Student1_rec{
-    char ID[];
-    int credits;
-    double grade;
-}
+    char ID[8];
+    struct score st1;
+};
 
 struct Student2_rec{
-    char first[];
-    char last[];
-    char bd[];
-    int credits;
-    double grade;
-}
+    struct name uname;
+    struct date bd;
+    struct score st2;
+};
 
 struct Mailing{
-    char first[];
-    char last[];
-    char street[];
-    char city[];
-    char country[];
-    char zip[];
-}
+    struct name mailn;
+    char street[50];
+    char city[50];
+    char country[50];
+    char zip[10];
+};
 
 struct stock{
-    char stock[];
+    char stock[50];
     double price;
-    char purchase_date[];
-}
+    struct date purchase_date;
+};
 
 struct Stemp {
-    struct Student1_rec;
-    struct Student2_rec;
-    struct Mailing;
-    struct stock;
-}
+    struct Student1_rec stu1;
+    struct Student2_rec stu2;
+    struct Mailing mail;
+    struct stock stockinfo;
+};
 
 int main() {
-    struct Stemp user;
-    user.Student1_rec = {{"4672"},{68},{3.01},{"Manee"},{"Deejai"},{"8/4/1980"}};
-    user.Student2_rec = {{"Manee"},{"Deejai"},{"8/4/1980"},{96},{3.89}};
-    user.Mailing = {{"Mana"},{"Klahan"},{"4 Road Salaya"},{"Putthamonthon"},{"Thailand"},{"73170"}};
-    user.stock = {{"ICT stock"},{134.5},{"10/1/2010"}};
-    printf("%s",user.Student1_rec);
+    struct Stemp user  = {  {"4672",{68,3.01}}, 
+                            {"Manee","Deejai",{8,4,1980},{96,3.89}},
+                            {"Mana","Klahan","4 Road Salaya","Putthamonthon","Thailand","73170"},
+                            {"ICT stock",134.5,{10,1,2010}}
+    };
+    printf("%s %d %f\n",user.stu1,user.stu1.st1.grade,user.stu1.st1.credit);
+    printf("%s\n",user.stu2);
 }
